@@ -1,0 +1,44 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: The Game - Win32 Release--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating temporary file "E:\DOKUME~1\NiKo\LOKALE~1\Temp\RSP39.tmp" with contents
+[
+/nologo /ML /W3 /GX /O2 /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /Fp"Release/The Game.pch" /YX /Fo"Release/" /Fd"Release/" /FD /c 
+"E:\Development\C++\Stuff\JLI Stuff\Starfield Battle Source\DXAManager.cpp"
+]
+Creating command line "cl.exe @E:\DOKUME~1\NiKo\LOKALE~1\Temp\RSP39.tmp" 
+Creating temporary file "E:\DOKUME~1\NiKo\LOKALE~1\Temp\RSP3A.tmp" with contents
+[
+winmm.lib dinput8.lib ddraw.lib dxguid.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /subsystem:windows /incremental:no /pdb:"Release/Starfield.pdb" /machine:I386 /out:"..\..\Starfield Battle\Starfield.exe" 
+".\Release\ArmedSprite.obj"
+".\Release\Colors.obj"
+".\Release\DDManager.obj"
+".\Release\DIManager.obj"
+".\Release\DXAManager.obj"
+".\Release\FXManager.obj"
+".\Release\GameManager.obj"
+".\Release\List.obj"
+".\Release\Main.obj"
+".\Release\Menu.obj"
+".\Release\Sprites.obj"
+".\Release\Starfield.obj"
+".\Release\RS2.res"
+]
+Creating command line "link.exe @E:\DOKUME~1\NiKo\LOKALE~1\Temp\RSP3A.tmp"
+<h3>Output Window</h3>
+Compiling...
+DXAManager.cpp
+Linking...
+
+
+
+<h3>Results</h3>
+Starfield.exe - 0 error(s), 0 warning(s)
+</pre>
+</body>
+</html>
