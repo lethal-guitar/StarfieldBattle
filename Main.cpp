@@ -616,7 +616,8 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 									}
 									else if (ScanCode == DIK_RETURN && PlayerName[0])
 									{
-										for (int i = 0; i < MAX_HISCORE_ENTRYS; i++)
+										int i;
+										for (i = 0; i < MAX_HISCORE_ENTRYS; i++)
 										{
 											if (Entrys[i].Score < PlPoints)
 												break;

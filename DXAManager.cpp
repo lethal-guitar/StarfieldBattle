@@ -118,7 +118,8 @@ void DirectXAudioManager::PlaySndFX(char* Name)
 {
 	if (NULL != Name)
 	{
-		for (int i = 0; i < 10; i++)
+		int i;
+		for (i = 0; i < 10; i++)
 		{
 			if (strcmp(SndFX[i], Name) == 0)
 				break;

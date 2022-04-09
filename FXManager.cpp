@@ -28,7 +28,8 @@ void FXManager::CreateExplosionAt(int x, int y)
 {
 	if (FXNr < MaxFX)
 	{
-		for (int i = 0; ;)
+		int i;
+		for (i = 0; ;)
 		{
 			if (SpriteArray[i].IsItDone() == TRUE)
 			{

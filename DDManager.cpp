@@ -128,7 +128,8 @@ LPDIRECTDRAWSURFACE7 DirectDrawManager::CreateSurfaceFromBitmap(LPCTSTR File, in
 	DeleteDC(hBmDC);
 	DeleteObject(hBm);
 
-	for (int i = 0; i < MAX_SURFACES; i++)
+	int i;
+	for (i = 0; i < MAX_SURFACES; i++)
 	{
 		if (NULL == SurfacesToRelease[i])
 		{
