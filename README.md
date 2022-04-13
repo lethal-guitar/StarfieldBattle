@@ -61,7 +61,10 @@ It switches screen resolution to 800x600,
 which looks terrible on a modern 4k or 1080p display.
 Screen recording tools like OBS or even FRAPS don't work with the game.
 And sometimes, it just crashes during startup.
-On Windows 7, the game still runs pretty well.
+
+Fortunately, there is an API hook utility called [DxWnd](https://sourceforge.net/projects/dxwnd/)
+which makes the game run well on Windows 10.
+I've added my [config file](https://raw.githubusercontent.com/lethal-guitar/StarfieldBattle/main/Starfield%20Battle.dxw) for convenience.
 
 ## State of the code
 
