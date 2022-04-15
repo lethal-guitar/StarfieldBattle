@@ -114,7 +114,7 @@ BOOL ArmedSprite::TestShotCollision(Sprite* ToTest)
 
 		if (NULL == Shot)
 		{
-			Error("Interner Fehler: TestShotCollision: Kein gültiger Zeiger");
+			Error("Interner Fehler: TestShotCollision: Kein gÃ¼ltiger Zeiger");
 			return FALSE;
 		}
 		

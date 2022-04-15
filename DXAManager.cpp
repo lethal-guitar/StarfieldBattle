@@ -30,7 +30,7 @@ BOOL DirectXAudioManager::Init(HWND hWnd, char* SearchPath)
 	MultiByteToWideChar(CP_ACP, 0, SearchPath, -1, wstrString, MAX_PATH);
 	
 	if (FAILED(lpDMLoader->SetSearchDirectory(GUID_DirectMusicAllTypes, wstrString, FALSE)))
-		return Error("Suchverzeichnis f¸r Sound-Dateien nicht gefunden (oder interner Programmfehler)"); 
+		return Error("Suchverzeichnis f√ºr Sound-Dateien nicht gefunden (oder interner Programmfehler)"); 
 
 	return TRUE;
 }
@@ -77,7 +77,7 @@ BOOL DirectXAudioManager::AddBGMusic(char* Filename)
 
 	if (FAILED(lpDMLoader->LoadObjectFromFile(CLSID_DirectMusicSegment, IID_IDirectMusicSegment8, wstrString, (LPVOID*)&lpDMSegBackgroundMusic)))
 	{
-		return Error("Musik-Datei nicht gefunden! (oder falsches Format, besch‰digte Datei o.a.)");
+		return Error("Musik-Datei nicht gefunden! (oder falsches Format, besch√§digte Datei o.a.)");
 	}
 
 	if (NULL != lpDMSegBackgroundMusic)
@@ -98,7 +98,7 @@ BOOL DirectXAudioManager::AddSndFX(char* Filename)
 
 	if (FAILED(lpDMLoader->LoadObjectFromFile(CLSID_DirectMusicSegment, IID_IDirectMusicSegment8, wstrString, (LPVOID*)&lpDMSegSoundFX[SndNr])))
 	{
-		return Error("Sound-Datei nicht gefunden! (oder falsches Format, besch‰digte Datei o.a.");
+		return Error("Sound-Datei nicht gefunden! (oder falsches Format, besch√§digte Datei o.a.");
 	}
 
 	if (NULL != lpDMSegSoundFX[SndNr])

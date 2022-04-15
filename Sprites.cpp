@@ -27,8 +27,8 @@ void Sprite::Create(LPDIRECTDRAWSURFACE7 lpDDS, int FrmWidth, int FrmHeight, int
 		
 	if (NULL == lpDDSSprite)
 	{
-		Error("Sprite konnte nicht erzeugt werden. Problem: Es wurde keine gültige\
-		             Oberfläche übergeben.");
+		Error("Sprite konnte nicht erzeugt werden. Problem: Es wurde keine gÃ¼ltige\
+		             OberflÃ¤che Ã¼bergeben.");
 		return;
 	}
 

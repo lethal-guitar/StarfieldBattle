@@ -9,7 +9,7 @@ void FXManager::Init(int MaxFX, LPDIRECTDRAWSURFACE7 lpDDS)
 	
 	if (NULL == lpDDS)
 	{
-		Error("FXManager: Es wurde keine gültige Oberfläche übergeben");
+		Error("FXManager: Es wurde keine gÃ¼ltige OberflÃ¤che Ã¼bergeben");
 	}
 
 	this->lpDDS = lpDDS;

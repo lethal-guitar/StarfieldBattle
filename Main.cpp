@@ -626,8 +626,8 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 										if (i >= MAX_HISCORE_ENTRYS)
 										{
 											Error("Achtung: Eintrag in HighScore-Liste war \
-												m�glich, obwohl Punktzahl nicht hoch genug war. \
-												Dies sollt �berhaupt nicht m�glich sein, deshalb \
+												mĂ¶glich, obwohl Punktzahl nicht hoch genug war. \
+												Dies sollt ĂĽberhaupt nicht mĂ¶glich sein, deshalb \
 												muss ein interner Programmfehler vorliegen! \
 												Programm wird beendet.");
 											DestroyWindow(hWnd);

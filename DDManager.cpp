@@ -37,12 +37,12 @@ BOOL DirectDrawManager::Init(HWND hWnd)
 		ddsd.dwBackBufferCount = 1;
 	
 		if (FAILED (lpDD7->CreateSurface(&ddsd, &lpDDSPrimary, NULL)))
-			return Error("Primäre Oberfläche konnte nicht erzeugt werden");
+			return Error("PrimÃ¤re OberflÃ¤che konnte nicht erzeugt werden");
 		
 		ddsd.ddsCaps.dwCaps = DDSCAPS_BACKBUFFER;
 
 		if (FAILED (lpDDSPrimary->GetAttachedSurface(&ddsd.ddsCaps, &lpDDSBackBuffer)))
-			return Error("BackBuffer konnte nicht mit der Hauptoberfläche verbunden werden");	
+			return Error("BackBuffer konnte nicht mit der HauptoberflÃ¤che verbunden werden");	
 	
 	}
 	else
@@ -139,7 +139,7 @@ LPDIRECTDRAWSURFACE7 DirectDrawManager::CreateSurfaceFromBitmap(LPCTSTR File, in
 
 	if (NULL != SurfacesToRelease[i])
 	{
-		Error("DirectDraw: Oberfläche kann nicht hinzugefügt werden, Maximale Anzahl Oberflächen erreicht");
+		Error("DirectDraw: OberflÃ¤che kann nicht hinzugefÃ¼gt werden, Maximale Anzahl OberflÃ¤chen erreicht");
 		lpDDSurface->Release();
 		return NULL;
 	}
