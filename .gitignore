@@ -3,3 +3,5 @@ Debug
 Release
 x64
 Scores.dat
+.idea
+cmake-build-*
