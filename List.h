@@ -5,7 +5,7 @@
 #ifndef LIST_H
 #define LIST_H
 
-#include <windows.h>
+#include <Windows.h>
 
 class Knoten
 {

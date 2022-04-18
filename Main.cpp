@@ -7,8 +7,8 @@
 #include "Menu.h"
 #include "Sprites.h"
 #include "Starfield.h"
+#include <Windows.h>
 #include <stdio.h>
-#include <windows.h>
 
 short FrameRate;
 
