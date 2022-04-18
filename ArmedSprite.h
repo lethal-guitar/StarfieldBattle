@@ -9,7 +9,7 @@ class ArmedSprite : public Sprite
 private:
   List ShotList;
   int ShotSpeed, MaxShots, NrShots, ShotDelay, CurrentDelay;
-  short ShotTime; //, MuzzleFrames;
+  short ShotTime;
   SpriteDescription ShotData;
   const char* ShotSound;
 
@@ -27,7 +27,6 @@ public:
     int,
     const char*,
     int = 0);
-  // void SetMuzzleFlash(LPDIRECTDRAWSURFACE7 lpDDS) { lpDDSMuzzle = lpDDS; }
   void DrawShots(LPDIRECTDRAWSURFACE7);
   void Fire(void);
 
