@@ -1,11 +1,11 @@
 # Starfield Battle
 
 This is the source code for a small game I made back in 2003.
-I'm planning to use this project for a series of videos
-where I'll clean up, modernize and refactor the code
+I'm using this project for a series of videos
+where I'm cleaning up, modernizing and refactoring the code
 to make it easier to read and bring it up to modern standards and best practices.
 
-Links to the videos will be added here as I publish them.
+* Part 1: video (tbd), [git tag](https://github.com/lethal-guitar/StarfieldBattle/commits/episode1)
 
 ## The original project
 
@@ -112,8 +112,9 @@ so this might still change somewhat.
 But here's my rough plan for what I want to do with the code:
 
 * ~Get it to compile in modern MSVC~
-* Make it run better on Windows 10
-* Run clang-format
+* ~Make it run better on Windows 10~ - accomplished via DxWnd
+* ~Run clang-format~
+* ~Create a CMake project file to replace the Visual Studio solution~
 * Eliminate all compiler warnings
 * Remove dead code
 * Run clang-tidy
@@ -130,7 +131,6 @@ But here's my rough plan for what I want to do with the code:
 * Improve naming
 * Simplify error handling and translate error messages to English
 * Replace usage of DirectX and Win32 APIs with [SFML](https://www.sfml-dev.org/)
-* Create a CMake project file to replace the Visual Studio solution
 * Get the code to build and run on Linux and Mac OS
 * Run with asan and ubsan sanitizers and eliminate all errors they find
 * Set up CI with GitHub actions
