@@ -1,276 +1,279 @@
 #include "GameManager.h"
 
 static LPDIRECTDRAWSURFACE7 lpDDSEnemy1;
-static LPDIRECTDRAWSURFACE7 lpDDSEnemy2;  
-static LPDIRECTDRAWSURFACE7 lpDDSEnemy3;  
-static LPDIRECTDRAWSURFACE7 lpDDSEmShot; 
- 
+static LPDIRECTDRAWSURFACE7 lpDDSEnemy2;
+static LPDIRECTDRAWSURFACE7 lpDDSEnemy3;
+static LPDIRECTDRAWSURFACE7 lpDDSEmShot;
+
 void SpriteManager::MoveAndShoot(BOOL Move)
 {
-	if ( NrSprites < MAX_ENEMYS && Move == TRUE)
-	{
-		if (NrSprites == 0)
-			AddEnemys(1);
-		
-		if (++Times > FrameRate / 60)			
-		{
-			NewSprTime++;
-			Times = 0;
-		}
-		
-		if (NewSprTime > NEWSPR_DELAY)
-		{
-			AddEnemys(1);
-			NewSprTime = 0;
-		}
-	}
-	
-	SpriteList.FirstKnoten();
+  if (NrSprites < MAX_ENEMYS && Move == TRUE)
+  {
+    if (NrSprites == 0)
+      AddEnemys(1);
 
-	ASprite* Spr = NULL; 
-	Sprite*  ShotsToDel[MAX_SHOTS];
-	unsigned char     Index = 0;
+    if (++Times > FrameRate / 60)
+    {
+      NewSprTime++;
+      Times = 0;
+    }
 
-	while (NULL != SpriteList.GetCurrent())
-	{
-		Spr = (ASprite*)SpriteList.GetCurrent()->GetEntry();
+    if (NewSprTime > NEWSPR_DELAY)
+    {
+      AddEnemys(1);
+      NewSprTime = 0;
+    }
+  }
 
-		if (Spr->GetType() == 4)
-		{
-			if (Spr->GetXY().y - Spr->GetSize().y > 0 && Spr->GetXY().y + Spr->GetSize().y < SCR_HEIGHT - 10)
-			{
-				Spr->Move(0, SHOTSPEED);
-				Spr->Draw(lpDDS);
-			}
-			else
-			{
-				ShotsToDel[Index] = Spr;
-				Index++;
-			}
-		}
-		else
-		{
-			if (Move)
-				Spr->Bounce();
+  SpriteList.FirstKnoten();
 
-			Spr->Draw(lpDDS);
-			Spr->IncShotDelay();
+  ASprite* Spr = NULL;
+  Sprite* ShotsToDel[MAX_SHOTS];
+  unsigned char Index = 0;
 
-			if (rand()%150 == 0 && Move == TRUE)
-			{
-				if (Spr->DoFire(&DMM))
-				{
-					FireShot(Spr->GetXY().x, Spr->GetXY().y + Spr->GetSize().y);
-				}
-			}
-		}
-	
-		if (SpriteList.NextKnoten() == FALSE)
-		{
-			break;
-		}
-	}
+  while (NULL != SpriteList.GetCurrent())
+  {
+    Spr = (ASprite*)SpriteList.GetCurrent()->GetEntry();
 
-	for (int i = 0; i < Index; i++)
-	{
-		SpriteList.FirstKnoten();
-		
-		while (((Sprite*)SpriteList.GetCurrent()->GetEntry()) != ShotsToDel[i])
-		{
-			if (!SpriteList.NextKnoten())
-				goto end;
-		}
+    if (Spr->GetType() == 4)
+    {
+      if (
+        Spr->GetXY().y - Spr->GetSize().y > 0 &&
+        Spr->GetXY().y + Spr->GetSize().y < SCR_HEIGHT - 10)
+      {
+        Spr->Move(0, SHOTSPEED);
+        Spr->Draw(lpDDS);
+      }
+      else
+      {
+        ShotsToDel[Index] = Spr;
+        Index++;
+      }
+    }
+    else
+    {
+      if (Move)
+        Spr->Bounce();
 
-		SpriteList.DeleteKnoten();
-		NrShots--;
+      Spr->Draw(lpDDS);
+      Spr->IncShotDelay();
 
-	end:;
-	}
+      if (rand() % 150 == 0 && Move == TRUE)
+      {
+        if (Spr->DoFire(&DMM))
+        {
+          FireShot(Spr->GetXY().x, Spr->GetXY().y + Spr->GetSize().y);
+        }
+      }
+    }
+
+    if (SpriteList.NextKnoten() == FALSE)
+    {
+      break;
+    }
+  }
+
+  for (int i = 0; i < Index; i++)
+  {
+    SpriteList.FirstKnoten();
+
+    while (((Sprite*)SpriteList.GetCurrent()->GetEntry()) != ShotsToDel[i])
+    {
+      if (!SpriteList.NextKnoten())
+        goto end;
+    }
+
+    SpriteList.DeleteKnoten();
+    NrShots--;
+
+  end:;
+  }
 }
 
 void SpriteManager::Init(int NrEnemys, LPDIRECTDRAWSURFACE7 lpDDS)
 {
-	if (NULL == lpDDSEnemy1)
-		lpDDSEnemy1 = DDM.CreateSurfaceFromBitmap("Sprites\\Enemy1.bmp", 240,  60);
-	
-	if (NULL == lpDDSEnemy2)
-		lpDDSEnemy2 = DDM.CreateSurfaceFromBitmap("Sprites\\Enemy2.bmp",  45,  40);
-	
-	if (NULL == lpDDSEnemy3)
-		lpDDSEnemy3 = DDM.CreateSurfaceFromBitmap("Sprites\\Enemy3.bmp", 280, 100);
-	
-	if (NULL == lpDDSEmShot)
-		lpDDSEmShot = DDM.CreateSurfaceFromBitmap("Sprites\\EmShoot.bmp", 60,  20);
+  if (NULL == lpDDSEnemy1)
+    lpDDSEnemy1 = DDM.CreateSurfaceFromBitmap("Sprites\\Enemy1.bmp", 240, 60);
 
-	if (NULL == this->lpDDS)
-		this->lpDDS = lpDDS;
+  if (NULL == lpDDSEnemy2)
+    lpDDSEnemy2 = DDM.CreateSurfaceFromBitmap("Sprites\\Enemy2.bmp", 45, 40);
 
-	AddEnemys(NrEnemys);
+  if (NULL == lpDDSEnemy3)
+    lpDDSEnemy3 = DDM.CreateSurfaceFromBitmap("Sprites\\Enemy3.bmp", 280, 100);
+
+  if (NULL == lpDDSEmShot)
+    lpDDSEmShot = DDM.CreateSurfaceFromBitmap("Sprites\\EmShoot.bmp", 60, 20);
+
+  if (NULL == this->lpDDS)
+    this->lpDDS = lpDDS;
+
+  AddEnemys(NrEnemys);
 }
 
 int SpriteManager::TestCollisions(ArmedSprite* ToTest, int* pScoreAmount)
 {
-	int ret = 0;
-	
-	SpriteList.FirstKnoten();
-	
-	ASprite* Spr;
-	
-	for (int i = 0; i < NrSprites + NrShots; i++)
-	{
-		Spr = (ASprite*)SpriteList.GetCurrent()->GetEntry();
+  int ret = 0;
 
-		char NrQuad1=1, NrQuad2=1;
+  SpriteList.FirstKnoten();
 
-		if (ToTest->GetXY(FALSE).x > SCR_WIDTH/2)
-			NrQuad1  = 2;
+  ASprite* Spr;
 
-		if (ToTest->GetXY().y < SCR_HEIGHT/2)
-			NrQuad1 += 2;
-		
-		if (Spr->GetXY(FALSE).x > SCR_WIDTH/2)
-			NrQuad2  = 2;
+  for (int i = 0; i < NrSprites + NrShots; i++)
+  {
+    Spr = (ASprite*)SpriteList.GetCurrent()->GetEntry();
 
-		if (Spr->GetXY().y < SCR_HEIGHT/2)
-			NrQuad2 += 2;
-		
-		if (NrQuad1 == NrQuad2)
-		{
-			if (ToTest->TestCollision(Spr) == TRUE )
-			{
-				if (Spr->GetType() == 4)
-				{
-					NrShots--;
-				}
-				else
-				{
-					FXM.CreateExplosionAt(Spr->GetXY(FALSE).x, Spr->GetXY().y);
-					NrSprites--;
-				}
-					
-				SpriteList.DeleteKnoten();
+    char NrQuad1 = 1, NrQuad2 = 1;
 
-				ret += PLAYER_IS_HIT;
-			}
-		}
+    if (ToTest->GetXY(FALSE).x > SCR_WIDTH / 2)
+      NrQuad1 = 2;
 
-		if (Spr->GetType() != 4)
-		{
-			if (ToTest->TestShotCollision(Spr) == TRUE)
-			{
-				char Type = Spr->GetType();
-					
-				FXM.CreateExplosionAt(Spr->GetXY(FALSE).x, Spr->GetXY().y);
-			
-				SpriteList.DeleteKnoten();
+    if (ToTest->GetXY().y < SCR_HEIGHT / 2)
+      NrQuad1 += 2;
 
-				NrSprites--;
+    if (Spr->GetXY(FALSE).x > SCR_WIDTH / 2)
+      NrQuad2 = 2;
 
-				ret += PLAYER_HAS_SCORED;
+    if (Spr->GetXY().y < SCR_HEIGHT / 2)
+      NrQuad2 += 2;
 
-				if (NULL != pScoreAmount)
-				{
-					*pScoreAmount = Type;
-				}
-			}
-		}
-			
-		if (SpriteList.NextKnoten() == FALSE)
-		{
-			break;
-		}
-	}
+    if (NrQuad1 == NrQuad2)
+    {
+      if (ToTest->TestCollision(Spr) == TRUE)
+      {
+        if (Spr->GetType() == 4)
+        {
+          NrShots--;
+        }
+        else
+        {
+          FXM.CreateExplosionAt(Spr->GetXY(FALSE).x, Spr->GetXY().y);
+          NrSprites--;
+        }
 
-	return ret;
+        SpriteList.DeleteKnoten();
+
+        ret += PLAYER_IS_HIT;
+      }
+    }
+
+    if (Spr->GetType() != 4)
+    {
+      if (ToTest->TestShotCollision(Spr) == TRUE)
+      {
+        char Type = Spr->GetType();
+
+        FXM.CreateExplosionAt(Spr->GetXY(FALSE).x, Spr->GetXY().y);
+
+        SpriteList.DeleteKnoten();
+
+        NrSprites--;
+
+        ret += PLAYER_HAS_SCORED;
+
+        if (NULL != pScoreAmount)
+        {
+          *pScoreAmount = Type;
+        }
+      }
+    }
+
+    if (SpriteList.NextKnoten() == FALSE)
+    {
+      break;
+    }
+  }
+
+  return ret;
 }
 
 void SpriteManager::ReInit(int NrEnemys)
 {
-	if (NrShots > 0)
-	{
-		while (NULL != SpriteList.GetCurrent())
-		{
-			if (((Sprite*)SpriteList.GetCurrent()->GetEntry())->GetType() == 4)
-			{
-				SpriteList.DeleteKnoten();
-				NrShots--;
-			}
+  if (NrShots > 0)
+  {
+    while (NULL != SpriteList.GetCurrent())
+    {
+      if (((Sprite*)SpriteList.GetCurrent()->GetEntry())->GetType() == 4)
+      {
+        SpriteList.DeleteKnoten();
+        NrShots--;
+      }
 
-			if (!SpriteList.NextKnoten())
-				break;
-		}
-	}
+      if (!SpriteList.NextKnoten())
+        break;
+    }
+  }
 
-	NewSprTime = 0;
-	
-	while (NrSprites > NrEnemys)
-	{
-		SpriteList.LastKnoten();
-		SpriteList.DeleteKnoten();
-		NrSprites--;
-	}
-	
-	if (NrSprites < NrEnemys)
-	{
-		AddEnemys(NrEnemys - NrSprites);
-	}
+  NewSprTime = 0;
+
+  while (NrSprites > NrEnemys)
+  {
+    SpriteList.LastKnoten();
+    SpriteList.DeleteKnoten();
+    NrSprites--;
+  }
+
+  if (NrSprites < NrEnemys)
+  {
+    AddEnemys(NrEnemys - NrSprites);
+  }
 }
 
 void SpriteManager::AddEnemys(int Nr)
 {
-	for (int i = 0; i < Nr; i++)
-	{
-		if (NrSprites < MAX_ENEMYS)
-		{
-			char Rnd = (char)(rand()%3+1);
-			
-			ASprite* Spr = new ASprite;
-				
-			switch (Rnd)
-			{
-			case 1:
-				Spr->Create(lpDDSEnemy1,  60,  60, MSECS(40), TRUE, 50, 0);
-				Spr->SetData(1, "Enemy1.wav", 10); 
-				Spr->SetNewBBox(8, 10, 51, 49);
-				break;
-			case 2:
-				Spr->Create(lpDDSEnemy2,  45,  40, 0, TRUE, 75, 75);
-				Spr->SetData(2, "Enemy2.wav", 5);
-				Spr->SetNewBBox(5, 4, 38, 35);
-				break;
-			case 3:
-				Spr->Create(lpDDSEnemy3,  70, 100, MSECS(50), TRUE, 50, 150);
-				Spr->SetData(3, "Enemy3.wav", 2);
-				Spr->SetNewBBox(9, 29, 62, 99);
-				break;
-			default: 
-				Spr->Create(lpDDSEnemy1,  60,  60, MSECS(35), TRUE, 50, 0);
-				Spr->SetData(1, "Enemy1.wav", 10);
-				Spr->SetNewBBox(8, 10, 52, 49);
-				break;
-			}
+  for (int i = 0; i < Nr; i++)
+  {
+    if (NrSprites < MAX_ENEMYS)
+    {
+      char Rnd = (char)(rand() % 3 + 1);
 
-			Spr->SetXY( (rand()%SCR_WIDTH+1), ((rand()%SCR_HEIGHT+1)-SCR_HEIGHT/2) );
+      ASprite* Spr = new ASprite;
 
-			SpriteList.Add((void*)Spr);
-			NrSprites++;
-		}
-	}
+      switch (Rnd)
+      {
+        case 1:
+          Spr->Create(lpDDSEnemy1, 60, 60, MSECS(40), TRUE, 50, 0);
+          Spr->SetData(1, "Enemy1.wav", 10);
+          Spr->SetNewBBox(8, 10, 51, 49);
+          break;
+        case 2:
+          Spr->Create(lpDDSEnemy2, 45, 40, 0, TRUE, 75, 75);
+          Spr->SetData(2, "Enemy2.wav", 5);
+          Spr->SetNewBBox(5, 4, 38, 35);
+          break;
+        case 3:
+          Spr->Create(lpDDSEnemy3, 70, 100, MSECS(50), TRUE, 50, 150);
+          Spr->SetData(3, "Enemy3.wav", 2);
+          Spr->SetNewBBox(9, 29, 62, 99);
+          break;
+        default:
+          Spr->Create(lpDDSEnemy1, 60, 60, MSECS(35), TRUE, 50, 0);
+          Spr->SetData(1, "Enemy1.wav", 10);
+          Spr->SetNewBBox(8, 10, 52, 49);
+          break;
+      }
+
+      Spr->SetXY(
+        (rand() % SCR_WIDTH + 1), ((rand() % SCR_HEIGHT + 1) - SCR_HEIGHT / 2));
+
+      SpriteList.Add((void*)Spr);
+      NrSprites++;
+    }
+  }
 }
 
 void SpriteManager::FireShot(int x, int y)
 {
-	if (NrShots < MAX_SHOTS)
-	{
-		Sprite* Shot = new Sprite;
+  if (NrShots < MAX_SHOTS)
+  {
+    Sprite* Shot = new Sprite;
 
-		Shot->Create(lpDDSEmShot, 12, 20, MSECS(16), TRUE);
+    Shot->Create(lpDDSEmShot, 12, 20, MSECS(16), TRUE);
 
-		Shot->SetXY(x, y);
-		Shot->SetType(4);
-		
-		SpriteList.Add((void*)Shot);
+    Shot->SetXY(x, y);
+    Shot->SetType(4);
 
-		NrShots++;
-	}
+    SpriteList.Add((void*)Shot);
+
+    NrShots++;
+  }
 }
