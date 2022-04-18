@@ -31,11 +31,6 @@ void ArmedSprite::SetShotData(
   CurrentDelay = ShotDelay = Delay;
 }
 
-void ArmedSprite::Draw(LPDIRECTDRAWSURFACE7 lpDDS)
-{
-  Sprite::Draw(lpDDS);
-}
-
 void ArmedSprite::DrawShots(LPDIRECTDRAWSURFACE7 lpDDS)
 {
   if (++ShotTime >= FrameRate / 60)

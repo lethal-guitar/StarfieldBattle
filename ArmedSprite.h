@@ -29,7 +29,6 @@ public:
     int = 0);
   // void SetMuzzleFlash(LPDIRECTDRAWSURFACE7 lpDDS) { lpDDSMuzzle = lpDDS; }
   void DrawShots(LPDIRECTDRAWSURFACE7);
-  void Draw(LPDIRECTDRAWSURFACE7);
   void Fire(void);
 
   BOOL TestShotCollision(Sprite* ToTest);
