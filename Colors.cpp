@@ -62,13 +62,11 @@ int CalcColor(unsigned const int r, unsigned const int g, unsigned const int b)
       case 32:
       case 24:
         return ((r << 16) + (g << 8) + b);
-        break;
       case 16:
         return (
           (((r) >> ClVals.ShiftRed) << ClVals.PosRed) +
           (((g) >> ClVals.ShiftGreen) << ClVals.PosGreen) +
           (((b) >> ClVals.ShiftBlue) << ClVals.PosBlue));
-        break;
     }
   }
 

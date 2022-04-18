@@ -14,45 +14,36 @@ BOOL DirectDrawManager::Init(HWND hWnd)
   ZeroMemory(&BlitFX, sizeof(BlitFX));
   BlitFX.dwSize = sizeof(BlitFX);
 
-  if (NULL == lpDD7)
-  {
-    if (FAILED(
-          DirectDrawCreateEx(NULL, (void**)&lpDD7, IID_IDirectDraw7, NULL)))
-      return Error("DirectDraw-Objekt konnte nicht angelegt werden");
+  if (FAILED(DirectDrawCreateEx(NULL, (void**)&lpDD7, IID_IDirectDraw7, NULL)))
+    return Error("DirectDraw-Objekt konnte nicht angelegt werden");
 
-    if (FAILED(lpDD7->SetCooperativeLevel(
-          hWnd, DDSCL_FULLSCREEN | DDSCL_EXCLUSIVE | DDSCL_ALLOWREBOOT)))
-      return Error("Kooperationsebene konnte nicht festgelegt werden");
+  if (FAILED(lpDD7->SetCooperativeLevel(
+        hWnd, DDSCL_FULLSCREEN | DDSCL_EXCLUSIVE | DDSCL_ALLOWREBOOT)))
+    return Error("Kooperationsebene konnte nicht festgelegt werden");
 
-    if (FAILED(lpDD7->SetDisplayMode(SCR_WIDTH, SCR_HEIGHT, COLOR_DEPTH, 0, 0)))
-      return Error("Bildschirmmodus konnte nicht gesetzt werden");
+  if (FAILED(lpDD7->SetDisplayMode(SCR_WIDTH, SCR_HEIGHT, COLOR_DEPTH, 0, 0)))
+    return Error("Bildschirmmodus konnte nicht gesetzt werden");
 
-    DDSURFACEDESC2 ddsd;
+  DDSURFACEDESC2 ddsd;
 
-    ZeroMemory(&ddsd, sizeof(ddsd));
-    ddsd.dwSize = sizeof(ddsd);
+  ZeroMemory(&ddsd, sizeof(ddsd));
+  ddsd.dwSize = sizeof(ddsd);
 
-    ddsd.dwFlags = DDSD_CAPS | DDSD_BACKBUFFERCOUNT;
+  ddsd.dwFlags = DDSD_CAPS | DDSD_BACKBUFFERCOUNT;
 
-    ddsd.ddsCaps.dwCaps = DDSCAPS_PRIMARYSURFACE | DDSCAPS_FLIP |
-      DDSCAPS_COMPLEX | DDSCAPS_VIDEOMEMORY;
+  ddsd.ddsCaps.dwCaps = DDSCAPS_PRIMARYSURFACE | DDSCAPS_FLIP |
+    DDSCAPS_COMPLEX | DDSCAPS_VIDEOMEMORY;
 
-    ddsd.dwBackBufferCount = 1;
+  ddsd.dwBackBufferCount = 1;
 
-    if (FAILED(lpDD7->CreateSurface(&ddsd, &lpDDSPrimary, NULL)))
-      return Error("Primäre Oberfläche konnte nicht erzeugt werden");
+  if (FAILED(lpDD7->CreateSurface(&ddsd, &lpDDSPrimary, NULL)))
+    return Error("Primäre Oberfläche konnte nicht erzeugt werden");
 
-    ddsd.ddsCaps.dwCaps = DDSCAPS_BACKBUFFER;
+  ddsd.ddsCaps.dwCaps = DDSCAPS_BACKBUFFER;
 
-    if (FAILED(
-          lpDDSPrimary->GetAttachedSurface(&ddsd.ddsCaps, &lpDDSBackBuffer)))
-      return Error(
-        "BackBuffer konnte nicht mit der Hauptoberfläche verbunden werden");
-  }
-  else
-  {
-    return Error("DirectDraw ist bereits initialisiert");
-  }
+  if (FAILED(lpDDSPrimary->GetAttachedSurface(&ddsd.ddsCaps, &lpDDSBackBuffer)))
+    return Error(
+      "BackBuffer konnte nicht mit der Hauptoberfläche verbunden werden");
 
   return TRUE;
 }
