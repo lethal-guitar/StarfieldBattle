@@ -7,7 +7,6 @@
 #include "Menu.h"
 #include "Sprites.h"
 #include "Starfield.h"
-#include <mmsystem.h>
 #include <stdio.h>
 #include <windows.h>
 

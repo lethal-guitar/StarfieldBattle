@@ -12,8 +12,6 @@ private:
   short ShotTime; //, MuzzleFrames;
   SpriteDescription ShotData;
   char* ShotSound;
-  // LPDIRECTDRAWSURFACE7 lpDDSMuzzle;
-  BOOL ShowMuzzle;
 
 public:
   ArmedSprite(void);
@@ -34,17 +32,7 @@ public:
   void Draw(LPDIRECTDRAWSURFACE7);
   void Fire(void);
 
-  BOOL AreThereShots(void)
-  {
-    if (NrShots > 0)
-      return TRUE;
-    else
-      return FALSE;
-  }
-
   BOOL TestShotCollision(Sprite* ToTest);
-
-  List& GetShotList(void) { return ShotList; }
 };
 
 #endif

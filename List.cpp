@@ -1,19 +1,5 @@
 #include "List.h"
 
-void List::Add(Knoten* NewKnoten)
-{
-  if (NULL == Start)
-  {
-    Start = End = NewKnoten;
-  }
-  else
-  {
-    End->SetNext(NewKnoten);
-    NewKnoten->SetPrev(End);
-    End = NewKnoten;
-  }
-}
-
 void List::Add(void* NewEntry)
 {
   Knoten* NewKnoten = new Knoten(NewEntry);

@@ -79,7 +79,6 @@ private:
   char* ShotSnd;
   int ShotDelay;
   short Time, CurrentShotDelay;
-  BOOL CanFire;
 
 public:
   void SetData(char Type, char* Sound, int Delay)
@@ -95,7 +94,7 @@ public:
     {
       Time = 0;
       CurrentShotDelay++;
-    } /*else CanFire = FALSE;*/
+    }
   }
 
   BOOL DoFire(DirectXAudioManager* SoundSource)

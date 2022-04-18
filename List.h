@@ -64,7 +64,6 @@ public:
   List(void) { Start = End = CurrentKnoten = NULL; }
   ~List() { Delete(); }
 
-  void Add(Knoten* NewKnoten);
   void Add(void* NewEntry);
 
   void Delete(void);

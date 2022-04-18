@@ -34,13 +34,6 @@ void ArmedSprite::SetShotData(
 void ArmedSprite::Draw(LPDIRECTDRAWSURFACE7 lpDDS)
 {
   Sprite::Draw(lpDDS);
-
-  /*
-  if (ShowMuzzle)
-  {
-          lpDDS->BltFast(DWORD(x), DWORD(y), lpDDSMuzzle, NULL,
-  DDBLTFAST_SRCCOLORKEY | DDBLTFAST_WAIT); MuzzleFrames++;
-  }*/
 }
 
 void ArmedSprite::DrawShots(LPDIRECTDRAWSURFACE7 lpDDS)
@@ -109,13 +102,6 @@ void ArmedSprite::Fire(void)
     CurrentDelay = 0;
 
     DMM.PlaySndFX(ShotSound);
-
-    /*
-    if (lpDDSMuzzle)
-    {
-            ShowMuzzle = TRUE;
-            MuzzleFrames = 0;
-    }*/
   }
 }
 

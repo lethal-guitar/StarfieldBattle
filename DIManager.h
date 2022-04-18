@@ -11,10 +11,6 @@
   #define FIRE 16
 
   #define USE_KEYBOARD 0
-  #define USE_MOUSE 1
-  #define USE_JOYSTICK 2
-
-  #define JOY_TOLERANCE 333
 
 struct KeyActionMap
 {
@@ -28,17 +24,8 @@ private:
   LPDIRECTINPUTDEVICE8 lpDIDevice;
 
   BOOL InitKeyboard(HWND);
-  BOOL InitJoystick(HWND);
-  BOOL InitMouse(HWND);
 
   int GetKeyboardInput(KeyActionMap KeyMap);
-  int GetMouseInput(void);
-  int GetJoystickInput(void);
-  static BOOL CALLBACK
-    EnumJoystickCallback(const DIDEVICEINSTANCE* lpDInstance, LPVOID lpContext);
-
-
-  int CurrentDevice;
 
 public:
   ~DirectInputManager();
