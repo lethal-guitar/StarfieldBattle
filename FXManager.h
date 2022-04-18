@@ -10,18 +10,18 @@
 class FXManager
 {
 private:
-  LPDIRECTDRAWSURFACE7 lpDDS;
-  Sprite* SpriteArray;
-  int MaxFX, FXNr;
+  LPDIRECTDRAWSURFACE7 m_lpDDS;
+  Sprite* m_SpriteArray;
+  int m_MaxFX, m_FXNr;
 
 public:
   FXManager(void)
   {
-    lpDDS = NULL;
-    SpriteArray = NULL;
-    MaxFX = FXNr = 0;
+    m_lpDDS = NULL;
+    m_SpriteArray = NULL;
+    m_MaxFX = m_FXNr = 0;
   }
-  ~FXManager() { delete[] SpriteArray; }
+  ~FXManager() { delete[] m_SpriteArray; }
 
   void Init(int MaxFX, LPDIRECTDRAWSURFACE7 lpDDS);
   void Draw(void);

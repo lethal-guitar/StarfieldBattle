@@ -13,33 +13,33 @@ void FXManager::Init(int MaxFX, LPDIRECTDRAWSURFACE7 lpDDS)
     Error("FXManager: Es wurde keine gültige Oberfläche übergeben");
   }
 
-  this->lpDDS = lpDDS;
+  this->m_lpDDS = lpDDS;
 
-  FXNr = 0;
+  m_FXNr = 0;
 
-  SpriteArray = new Sprite[this->MaxFX = MaxFX];
+  m_SpriteArray = new Sprite[this->m_MaxFX = MaxFX];
 
   for (int i = 0; i < MaxFX; i++)
   {
-    SpriteArray[i].Create(lpDDSExplosion, 80, 80, MSECS(30), FALSE);
+    m_SpriteArray[i].Create(lpDDSExplosion, 80, 80, MSECS(30), FALSE);
   }
 }
 
 void FXManager::CreateExplosionAt(int x, int y)
 {
-  if (FXNr < MaxFX)
+  if (m_FXNr < m_MaxFX)
   {
     int i;
     for (i = 0;;)
     {
-      if (SpriteArray[i].IsItDone() == TRUE)
+      if (m_SpriteArray[i].IsItDone() == TRUE)
       {
         goto CreateIt;
       }
 
       i++;
 
-      if (i >= MaxFX)
+      if (i >= m_MaxFX)
       {
         goto CreateIt;
       }
@@ -47,26 +47,26 @@ void FXManager::CreateExplosionAt(int x, int y)
 
   CreateIt:
 
-    FXNr++;
+    m_FXNr++;
 
     DMM.PlaySndFX("Explosion.wav");
 
-    SpriteArray[i].SetXY(x, y);
-    SpriteArray[i].Reset();
+    m_SpriteArray[i].SetXY(x, y);
+    m_SpriteArray[i].Reset();
   }
 }
 
 void FXManager::Draw(void)
 {
-  for (int i = 0; i < MaxFX; i++)
+  for (int i = 0; i < m_MaxFX; i++)
   {
-    SpriteArray[i].Draw(lpDDS);
+    m_SpriteArray[i].Draw(m_lpDDS);
 
-    if (SpriteArray[i].IsItDone() == TRUE)
+    if (m_SpriteArray[i].IsItDone() == TRUE)
     {
-      if (FXNr > 0)
+      if (m_FXNr > 0)
       {
-        FXNr--;
+        m_FXNr--;
       }
     }
   }
