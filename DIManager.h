@@ -25,8 +25,6 @@ private:
 
   BOOL InitKeyboard(HWND);
 
-  int GetKeyboardInput(KeyActionMap KeyMap);
-
 public:
   ~DirectInputManager();
 

@@ -20,27 +20,6 @@ BOOL DirectInputManager::Init(HWND hWnd, HINSTANCE hInstance, int)
 
 int DirectInputManager::GetInput(KeyActionMap KeyMap)
 {
-  return GetKeyboardInput(KeyMap);
-}
-
-DirectInputManager::~DirectInputManager()
-{
-  if (NULL != lpDIDevice)
-  {
-    lpDIDevice->Unacquire();
-    lpDIDevice->Release();
-    lpDIDevice = NULL;
-  }
-
-  if (NULL != lpDI8)
-  {
-    lpDI8->Release();
-    lpDI8 = NULL;
-  }
-}
-
-int DirectInputManager::GetKeyboardInput(KeyActionMap KeyMap)
-{
   char bKeyboard[256];
 
   if (FAILED(lpDIDevice->GetDeviceState(sizeof(bKeyboard), (void*)&bKeyboard)))
@@ -75,6 +54,22 @@ int DirectInputManager::GetKeyboardInput(KeyActionMap KeyMap)
   }
 
   return ret;
+}
+
+DirectInputManager::~DirectInputManager()
+{
+  if (NULL != lpDIDevice)
+  {
+    lpDIDevice->Unacquire();
+    lpDIDevice->Release();
+    lpDIDevice = NULL;
+  }
+
+  if (NULL != lpDI8)
+  {
+    lpDI8->Release();
+    lpDI8 = NULL;
+  }
 }
 
 BOOL DirectInputManager::InitKeyboard(HWND hWnd)
