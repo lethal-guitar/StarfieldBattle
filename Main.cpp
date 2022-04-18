@@ -28,7 +28,7 @@ static BOOL Running = TRUE, InGame = FALSE, QuitQuery = FALSE,
 
 static LPDIRECTDRAWSURFACE7 lpDDSLogo;
 
-int Error(char* string)
+int Error(const char* string)
 {
   MessageBox(hWnd, string, "Fehler", MB_OK | MB_ICONEXCLAMATION);
   OutputDebugString(string);

@@ -16,7 +16,7 @@ void ArmedSprite::SetShotData(
   BOOL Looped,
   int Max,
   int Speed,
-  char* Sound,
+  const char* Sound,
   int Delay)
 {
   ShotData.lpDDS = lpDDS;

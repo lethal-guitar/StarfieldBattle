@@ -11,7 +11,7 @@ private:
   int ShotSpeed, MaxShots, NrShots, ShotDelay, CurrentDelay;
   short ShotTime; //, MuzzleFrames;
   SpriteDescription ShotData;
-  char* ShotSound;
+  const char* ShotSound;
 
 public:
   ArmedSprite(void);
@@ -25,7 +25,7 @@ public:
     BOOL,
     int,
     int,
-    char*,
+    const char*,
     int = 0);
   // void SetMuzzleFlash(LPDIRECTDRAWSURFACE7 lpDDS) { lpDDSMuzzle = lpDDS; }
   void DrawShots(LPDIRECTDRAWSURFACE7);

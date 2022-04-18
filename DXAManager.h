@@ -12,16 +12,16 @@ private:
   IDirectMusicSegment8* lpDMSegBackgroundMusic;
   IDirectMusicSegment8* lpDMSegSoundFX[10];
 
-  char* SndFX[10];
+  const char* SndFX[10];
   int SndNr;
 
 public:
   ~DirectXAudioManager();
 
-  BOOL Init(HWND, char*);
+  BOOL Init(HWND, const char*);
 
-  BOOL AddBGMusic(char* Filename);
-  BOOL AddSndFX(char* Filename);
+  BOOL AddBGMusic(const char* Filename);
+  BOOL AddSndFX(const char* Filename);
 
   void SetGlobalVolume(void);
 
@@ -37,7 +37,7 @@ public:
       NULL,
       NULL);
   }
-  void PlaySndFX(char* Name);
+  void PlaySndFX(const char* Name);
 };
 
 #endif

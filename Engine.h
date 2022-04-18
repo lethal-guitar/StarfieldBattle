@@ -31,6 +31,6 @@ struct HiScoreEntry
 #endif
 
 // extern HWND hWnd;
-extern int Error(char*);
+extern int Error(const char*);
 
 extern short FrameRate;

@@ -1,7 +1,7 @@
 #include "DXAManager.h"
 #include <stdio.h>
 
-BOOL DirectXAudioManager::Init(HWND hWnd, char* SearchPath)
+BOOL DirectXAudioManager::Init(HWND hWnd, const char* SearchPath)
 {
   lpDMPerformance = NULL;
   lpDMLoader = NULL;
@@ -88,7 +88,7 @@ DirectXAudioManager::~DirectXAudioManager()
   CoUninitialize();
 }
 
-BOOL DirectXAudioManager::AddBGMusic(char* Filename)
+BOOL DirectXAudioManager::AddBGMusic(const char* Filename)
 {
   WCHAR wstrString[MAX_PATH];
 
@@ -115,7 +115,7 @@ BOOL DirectXAudioManager::AddBGMusic(char* Filename)
   return TRUE;
 }
 
-BOOL DirectXAudioManager::AddSndFX(char* Filename)
+BOOL DirectXAudioManager::AddSndFX(const char* Filename)
 {
   WCHAR wstrString[MAX_PATH];
 
@@ -143,7 +143,7 @@ BOOL DirectXAudioManager::AddSndFX(char* Filename)
   return TRUE;
 }
 
-void DirectXAudioManager::PlaySndFX(char* Name)
+void DirectXAudioManager::PlaySndFX(const char* Name)
 {
   if (NULL != Name)
   {

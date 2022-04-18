@@ -76,12 +76,12 @@ public:
 class ASprite_NoList : public Sprite
 {
 private:
-  char* ShotSnd;
+  const char* ShotSnd;
   int ShotDelay;
   short Time, CurrentShotDelay;
 
 public:
-  void SetData(char Type, char* Sound, int Delay)
+  void SetData(char Type, const char* Sound, int Delay)
   {
     this->Type = Type;
     ShotSnd = Sound;
