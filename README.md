@@ -5,7 +5,7 @@ I'm using this project for a series of videos
 where I'm cleaning up, modernizing and refactoring the code
 to make it easier to read and bring it up to modern standards and best practices.
 
-* Part 1: video (tbd), [git tag](https://github.com/lethal-guitar/StarfieldBattle/commits/episode1)
+* Part 1: [video](https://youtu.be/aZR1y_zwNLw), [git tag](https://github.com/lethal-guitar/StarfieldBattle/commits/episode1)
 
 ## The original project
 
