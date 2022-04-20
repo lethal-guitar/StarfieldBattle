@@ -55,17 +55,6 @@ and I don't remember where I got the sound effects from but I can only
 imagine that they were also ripped from other games and maybe some
 websites with free sound effects.
 
-The original executable still somewhat runs on modern Windows (i.e. Windows 10),
-but the exclusive fullscreen mode that it uses is pretty wonky.
-It switches screen resolution to 800x600,
-which looks terrible on a modern 4k or 1080p display.
-Screen recording tools like OBS or even FRAPS don't work with the game.
-And sometimes, it just crashes during startup.
-
-Fortunately, there is an API hook utility called [DxWnd](https://sourceforge.net/projects/dxwnd/)
-which makes the game run well on Windows 10.
-I've added my [config file](https://raw.githubusercontent.com/lethal-guitar/StarfieldBattle/main/Starfield%20Battle.dxw) for convenience.
-
 ## State of the code
 
 The original code is, frankly, quite bad 😄
@@ -135,3 +124,28 @@ But here's my rough plan for what I want to do with the code:
 * Run with asan and ubsan sanitizers and eliminate all errors they find
 * Set up CI with GitHub actions
 * Rework the odd and unusual timing code
+
+## Building and running
+
+To build, you need Visual Studio 2022 and CMake.
+
+I highly recommend using [DxWnd](https://sourceforge.net/projects/dxwnd/)
+to run the game on modern Windows.
+I've added my [config file](https://raw.githubusercontent.com/lethal-guitar/StarfieldBattle/main/Starfield%20Battle.dxw) for convenience.
+
+First, build the project.
+Then launch DxWnd,
+import the configuration, right-click, "Modify",
+and then set the path to the exe you just built.
+
+From now on, DxWnd will automatically hook the exe's DirectX API calls
+and make it run in a window, as long as DxWnd is running in the background.
+This means you can launch the game from an IDE and DxWnd is still going to do its thing -
+you don't need to launch it through DxWnd.
+
+It is possible to run the game without DxWnd,
+but the fullscreen mode switch is quite disruptive
+on modern Windows - DPI settings for other currently open
+applications get messed up, windows might move to another scren
+etc. Plus, it's not possible to take screenshots or record video of the game
+when it's running fullscreen.
