@@ -33,7 +33,7 @@ void Star::Move()
   }
 }
 
-void Star::Draw(int Pitch, WORD* wlpSurface)
+void Star::Draw(int Pitch, WORD* wlpSurface) const
 {
   int index = ((int)y * Pitch + (int)x);
 

@@ -19,7 +19,7 @@ private:
 public:
   Star();
   void Move();
-  void Draw(int, WORD*);
+  void Draw(int, WORD*) const;
 };
 
 class Starfield

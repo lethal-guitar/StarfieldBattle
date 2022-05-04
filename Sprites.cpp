@@ -164,7 +164,7 @@ void Sprite::Bounce()
   }
 }
 
-BOOL Sprite::TestCollision(Sprite* ToTest)
+BOOL Sprite::TestCollision(Sprite* ToTest) const
 {
   int rx = (BBox.right - BBox.left) / 2;
   int ry = (BBox.bottom - BBox.top) / 2;
