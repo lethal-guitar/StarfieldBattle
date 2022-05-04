@@ -10,8 +10,6 @@
   #define MOVE_DOWN 8
   #define FIRE 16
 
-  #define USE_KEYBOARD 0
-
 struct KeyActionMap
 {
   int Key_Left, Key_Right, Key_Up, Key_Down, Key_Fire;
@@ -28,11 +26,11 @@ private:
 public:
   ~DirectInputManager();
 
-  BOOL Init(HWND hWnd, HINSTANCE hInstance, int Dev);
+  BOOL Init(HWND hWnd, HINSTANCE hInstance);
   int GetInput(KeyActionMap KeyMap);
 
   DWORD GetScanCode(void);
-  void Flush(int Device);
+  void Flush();
 };
 
 #endif

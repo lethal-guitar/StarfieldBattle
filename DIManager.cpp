@@ -1,6 +1,6 @@
 #include "DIManager.h"
 
-BOOL DirectInputManager::Init(HWND hWnd, HINSTANCE hInstance, int)
+BOOL DirectInputManager::Init(HWND hWnd, HINSTANCE hInstance)
 {
   lpDI8 = NULL;
   lpDIDevice = NULL;
@@ -128,7 +128,7 @@ DWORD DirectInputManager::GetScanCode(void)
   return 0;
 }
 
-void DirectInputManager::Flush(int)
+void DirectInputManager::Flush()
 {
   DWORD dwTmp = INFINITE;
 

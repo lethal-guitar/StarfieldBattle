@@ -201,7 +201,7 @@ int WINAPI WinMain(
 
   DirectInputManager DIM;
 
-  if (!DIM.Init(hWnd, hInstance, USE_KEYBOARD))
+  if (!DIM.Init(hWnd, hInstance))
   {
     Error("Fehler beim Initialisiern von DirectInput");
     return -1;
@@ -620,7 +620,7 @@ int WINAPI WinMain(
 
             if (DoFlush && RGBFadeIn >= 250)
             {
-              DIM.Flush(USE_KEYBOARD);
+              DIM.Flush();
               DoFlush = FALSE;
               Times = 0;
             }
@@ -776,7 +776,7 @@ int WINAPI WinMain(
               DoFlush = TRUE;
               InGame = FALSE;
 
-              DIM.Flush(USE_KEYBOARD);
+              DIM.Flush();
               Menu.SetState(TRUE);
             }
           }
@@ -802,7 +802,7 @@ int WINAPI WinMain(
               Player.SetXY(350, 480);
               Enemys.ReInit(5);
               Menu.SetState(FALSE);
-              DIM.Flush(USE_KEYBOARD);
+              DIM.Flush();
               break;
             case 1:
               MultiPlayerTime = MULTIPLAYER_START_TIME;
@@ -820,7 +820,7 @@ int WINAPI WinMain(
               Player2.SetXY(250, 480);
               Enemys.ReInit(5);
               Menu.SetState(FALSE);
-              DIM.Flush(USE_KEYBOARD);
+              DIM.Flush();
               break;
             case 2:
               ViewScores = TRUE;
