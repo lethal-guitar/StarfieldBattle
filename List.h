@@ -21,7 +21,7 @@ public:
     m_Entry = nullptr;
     m_Next = m_Prev = nullptr;
   }
-  Knoten(void* Entry)
+  explicit Knoten(void* Entry)
   {
     m_Entry = Entry;
     m_Next = m_Prev = nullptr;
