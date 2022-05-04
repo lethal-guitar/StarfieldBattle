@@ -1,6 +1,7 @@
 #include "Sprites.h"
 #include "ArmedSprite.h"
 #include "Colors.h"
+#include <algorithm>
 
 Sprite::Sprite()
 {
@@ -91,25 +92,8 @@ void Sprite::Draw(LPDIRECTDRAWSURFACE7 lpDDS)
         &r,
         DDBLTFAST_SRCCOLORKEY | DDBLTFAST_WAIT)))
   {
-    if (x < 0)
-    {
-      x = 0;
-    }
-
-    if (y < 0)
-    {
-      y = 0;
-    }
-
-    if (x + FrameWidth > SCR_WIDTH)
-    {
-      x = x - (FrameWidth - (SCR_WIDTH - x));
-    }
-
-    if (y + FrameHeight > SCR_HEIGHT)
-    {
-      y = y - (FrameHeight - (SCR_HEIGHT - y));
-    }
+    x = std::clamp(x, 0.0f, float(SCR_WIDTH - FrameWidth));
+    y = std::clamp(y, 0.0f, float(SCR_WIDTH - FrameHeight));
 
     lpDDS->BltFast(
       DWORD(x),
