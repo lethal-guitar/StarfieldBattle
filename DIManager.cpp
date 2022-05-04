@@ -108,7 +108,7 @@ BOOL DirectInputManager::InitKeyboard(HWND hWnd)
   return TRUE;
 }
 
-DWORD DirectInputManager::GetScanCode(void)
+DWORD DirectInputManager::GetScanCode()
 {
   DWORD NumElements = 1;
   DIDEVICEOBJECTDATA data;

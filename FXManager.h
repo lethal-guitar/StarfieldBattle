@@ -15,7 +15,7 @@ private:
   int m_MaxFX, m_FXNr;
 
 public:
-  FXManager(void)
+  FXManager()
   {
     m_lpDDS = nullptr;
     m_SpriteArray = nullptr;
@@ -24,7 +24,7 @@ public:
   ~FXManager() { delete[] m_SpriteArray; }
 
   void Init(int MaxFX, LPDIRECTDRAWSURFACE7 lpDDS);
-  void Draw(void);
+  void Draw();
   void CreateExplosionAt(int x, int y);
 };
 

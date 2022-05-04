@@ -17,8 +17,8 @@ private:
   int Length;
 
 public:
-  Star(void);
-  void Move(void);
+  Star();
+  void Move();
   void Draw(int, WORD*);
 };
 

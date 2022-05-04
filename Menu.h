@@ -16,7 +16,7 @@ private:
   POINT Position;
 
 public:
-  GameMenu(void);
+  GameMenu();
   GameMenu(LPDIRECTDRAWSURFACE7 lpDDS, int iItems, RECT rBBox, POINT pPos);
 
   void DrawMenu(LPDIRECTDRAWSURFACE7 lpDDS);

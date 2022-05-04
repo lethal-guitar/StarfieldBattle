@@ -1,6 +1,6 @@
 #include "ArmedSprite.h"
 
-ArmedSprite::ArmedSprite(void)
+ArmedSprite::ArmedSprite()
 {
   ShotSpeed = MaxShots = NrShots = CurrentDelay = ShotDelay = ShotTime = 0;
   ShotSound = nullptr;
@@ -71,7 +71,7 @@ void ArmedSprite::DrawShots(LPDIRECTDRAWSURFACE7 lpDDS)
   }
 }
 
-void ArmedSprite::Fire(void)
+void ArmedSprite::Fire()
 {
   if (NrShots < MaxShots && CurrentDelay > ShotDelay)
   {
@@ -130,7 +130,7 @@ BOOL ArmedSprite::TestShotCollision(Sprite* ToTest)
   return FALSE;
 }
 
-void ArmedSprite::ClearShotList(void)
+void ArmedSprite::ClearShotList()
 {
   ShotList.FirstKnoten();
 

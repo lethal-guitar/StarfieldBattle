@@ -5,7 +5,7 @@
 
 STARCOLORS StarColors[MAX_SPEED];
 
-Star::Star(void)
+Star::Star()
 {
   x = (float)(rand() % SCR_WIDTH);
   y = (float)(rand() % SCR_HEIGHT);
@@ -16,7 +16,7 @@ Star::Star(void)
   Length = (int)(dy + 1);
 }
 
-void Star::Move(void)
+void Star::Move()
 {
   y += dy / (FrameRate / 35);
 

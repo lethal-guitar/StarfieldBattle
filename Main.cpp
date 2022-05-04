@@ -146,7 +146,7 @@ static int Scan2Ascii(DWORD Scancode, USHORT* Result)
   return ToAsciiEx(Vk, Scancode, State, Result, 0, Layout);
 }
 
-BOOL DoMainInits(void)
+BOOL DoMainInits()
 {
   SetCursor(nullptr);
 

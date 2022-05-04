@@ -24,7 +24,7 @@ protected:
   RECT BBox;
 
 public:
-  Sprite(void);
+  Sprite();
 
   void Create(LPDIRECTDRAWSURFACE7, int, int, int, BOOL, int = 100, int = 100);
   void SetXY(int PosX, int PosY)
@@ -40,7 +40,7 @@ public:
       y += MvY;
   }
   void Draw(LPDIRECTDRAWSURFACE7);
-  void Reset(void)
+  void Reset()
   {
     if (Continue == FALSE)
     {
@@ -55,22 +55,22 @@ public:
       p.x = int(x) + FrameWidth / 2;
     return p;
   }
-  POINT GetSize(void)
+  POINT GetSize()
   {
     POINT p = {FrameWidth, FrameHeight};
     return p;
   }
-  void Bounce(void);
+  void Bounce();
   BOOL TestCollision(Sprite* ToTest);
-  BOOL IsItDone(void) { return Done; }
+  BOOL IsItDone() { return Done; }
 
-  char GetType(void) { return Type; }
+  char GetType() { return Type; }
   void SetType(char NewType) { Type = NewType; }
   void SetNewBBox(int x1, int y1, int x2, int y2)
   {
     SetRect(&BBox, x1, y1, x2, y2);
   }
-  RECT& GetBBox(void) { return BBox; }
+  RECT& GetBBox() { return BBox; }
 };
 
 class ASprite_NoList : public Sprite
@@ -88,7 +88,7 @@ public:
     ShotDelay = Delay;
   }
 
-  void IncShotDelay(void)
+  void IncShotDelay()
   {
     if (++Time >= FrameRate / 60)
     {

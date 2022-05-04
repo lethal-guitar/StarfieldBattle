@@ -23,9 +23,9 @@ public:
   BOOL AddBGMusic(const char* Filename);
   BOOL AddSndFX(const char* Filename);
 
-  void SetGlobalVolume(void);
+  void SetGlobalVolume();
 
-  void PlayBGMusic(void)
+  void PlayBGMusic()
   {
     lpDMPerformance->PlaySegmentEx(
       lpDMSegBackgroundMusic,

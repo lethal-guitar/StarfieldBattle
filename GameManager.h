@@ -20,7 +20,7 @@ private:
   LPDIRECTDRAWSURFACE7 lpDDS;
 
 public:
-  SpriteManager(void)
+  SpriteManager()
   {
     NrSprites = NrShots = NewSprTime = 0;
     lpDDS = nullptr;

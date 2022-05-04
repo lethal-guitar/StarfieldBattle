@@ -29,7 +29,7 @@ public:
   BOOL Init(HWND hWnd, HINSTANCE hInstance);
   int GetInput(KeyActionMap KeyMap);
 
-  DWORD GetScanCode(void);
+  DWORD GetScanCode();
   void Flush();
 };
 

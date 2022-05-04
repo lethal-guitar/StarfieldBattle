@@ -29,13 +29,13 @@ public:
       nullptr, nullptr, nullptr, DDBLT_COLORFILL | DDBLT_WAIT, &BlitFX);
   }
 
-  void Flip(void) { lpDDSPrimary->Flip(nullptr, DDFLIP_WAIT); }
-  void CopyPrimaryToBackBuffer(void)
+  void Flip() { lpDDSPrimary->Flip(nullptr, DDFLIP_WAIT); }
+  void CopyPrimaryToBackBuffer()
   {
     lpDDSBackBuffer->BltFast(0, 0, lpDDSPrimary, nullptr, DDBLTFAST_WAIT);
   }
 
-  LPDIRECTDRAWSURFACE7 GetBuffer(void) { return lpDDSBackBuffer; }
+  LPDIRECTDRAWSURFACE7 GetBuffer() { return lpDDSBackBuffer; }
 
   LPDIRECTDRAWSURFACE7 CreateSurfaceFromBitmap(LPCTSTR, int, int);
 };

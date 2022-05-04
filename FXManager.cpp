@@ -56,7 +56,7 @@ void FXManager::CreateExplosionAt(int x, int y)
   }
 }
 
-void FXManager::Draw(void)
+void FXManager::Draw()
 {
   for (int i = 0; i < m_MaxFX; i++)
   {

@@ -16,7 +16,7 @@ void List::Add(void* NewEntry)
   }
 }
 
-void List::Delete(void)
+void List::Delete()
 {
   if (nullptr != End)
   {
@@ -29,7 +29,7 @@ void List::Delete(void)
   }
 }
 
-BOOL List::NextKnoten(void)
+BOOL List::NextKnoten()
 {
   if (nullptr != CurrentKnoten)
   {
@@ -43,7 +43,7 @@ BOOL List::NextKnoten(void)
   return FALSE;
 }
 
-BOOL List::PrevKnoten(void)
+BOOL List::PrevKnoten()
 {
   if (nullptr != CurrentKnoten)
   {
@@ -57,7 +57,7 @@ BOOL List::PrevKnoten(void)
   return FALSE;
 }
 
-void List::DeleteKnoten(void)
+void List::DeleteKnoten()
 {
   if (nullptr != CurrentKnoten)
   {

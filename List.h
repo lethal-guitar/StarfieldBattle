@@ -16,7 +16,7 @@ class Knoten
   Knoten* m_Prev;
 
 public:
-  Knoten(void)
+  Knoten()
   {
     m_Entry = nullptr;
     m_Next = m_Prev = nullptr;
@@ -35,7 +35,7 @@ public:
     }
   }
 
-  void* GetEntry(void)
+  void* GetEntry()
   {
     if (nullptr != m_Entry)
     {
@@ -48,10 +48,10 @@ public:
   }
 
   void SetNext(Knoten* Next) { m_Next = Next; }
-  Knoten* GetNext(void) { return m_Next; }
+  Knoten* GetNext() { return m_Next; }
 
   void SetPrev(Knoten* Prev) { m_Prev = Prev; }
-  Knoten* GetPrev(void) { return m_Prev; }
+  Knoten* GetPrev() { return m_Prev; }
 };
 
 class List
@@ -61,22 +61,22 @@ class List
   Knoten* CurrentKnoten;
 
 public:
-  List(void) { Start = End = CurrentKnoten = nullptr; }
+  List() { Start = End = CurrentKnoten = nullptr; }
   ~List() { Delete(); }
 
   void Add(void* NewEntry);
 
-  void Delete(void);
+  void Delete();
 
-  BOOL NextKnoten(void);
-  BOOL PrevKnoten(void);
-  void FirstKnoten(void) { CurrentKnoten = Start; }
-  void LastKnoten(void) { CurrentKnoten = End; }
+  BOOL NextKnoten();
+  BOOL PrevKnoten();
+  void FirstKnoten() { CurrentKnoten = Start; }
+  void LastKnoten() { CurrentKnoten = End; }
 
   void ReplaceCurrent(void* NewEntry);
 
-  Knoten* GetCurrent(void) { return CurrentKnoten; }
-  void DeleteKnoten(void);
+  Knoten* GetCurrent() { return CurrentKnoten; }
+  void DeleteKnoten();
 };
 
 #endif

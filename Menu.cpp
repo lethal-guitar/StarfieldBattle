@@ -1,6 +1,6 @@
 #include "Menu.h"
 
-GameMenu::GameMenu(void)
+GameMenu::GameMenu()
 {
   lpDDSMenuItemsSource = nullptr;
   iNrItems = iCurrentItem = 0;

@@ -177,7 +177,7 @@ void DirectXAudioManager::PlaySndFX(const char* Name)
   }
 }
 
-void DirectXAudioManager::SetGlobalVolume(void)
+void DirectXAudioManager::SetGlobalVolume()
 {
   long Volume = 0;
 

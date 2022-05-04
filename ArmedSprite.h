@@ -14,9 +14,9 @@ private:
   const char* ShotSound;
 
 public:
-  ArmedSprite(void);
+  ArmedSprite();
 
-  void ClearShotList(void);
+  void ClearShotList();
   void SetShotData(
     LPDIRECTDRAWSURFACE7,
     int,
@@ -28,7 +28,7 @@ public:
     const char*,
     int = 0);
   void DrawShots(LPDIRECTDRAWSURFACE7);
-  void Fire(void);
+  void Fire();
 
   BOOL TestShotCollision(Sprite* ToTest);
 };

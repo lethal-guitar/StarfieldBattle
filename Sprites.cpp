@@ -2,7 +2,7 @@
 #include "ArmedSprite.h"
 #include "Colors.h"
 
-Sprite::Sprite(void)
+Sprite::Sprite()
 {
   lpDDSSprite = nullptr;
   Looped = Done = TRUE;
@@ -146,7 +146,7 @@ void Sprite::Draw(LPDIRECTDRAWSURFACE7 lpDDS)
   }
 }
 
-void Sprite::Bounce(void)
+void Sprite::Bounce()
 {
   x += float(float(StepX) / FrameRate);
   y += float(float(StepY) / FrameRate);
