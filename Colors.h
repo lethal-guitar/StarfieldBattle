@@ -22,5 +22,4 @@ struct ColorValues
 };
 
 extern void DeterminePixelFormat(LPDIRECTDRAWSURFACE7);
-extern int
-  CalcColor(unsigned const int r, unsigned const int g, unsigned const int b);
+extern int CalcColor(unsigned int r, unsigned int g, unsigned int b);
