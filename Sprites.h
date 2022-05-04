@@ -50,7 +50,7 @@ public:
       Done = FALSE;
     }
   }
-  POINT GetXY(BOOL AddHalfSizeX = TRUE) const
+  [[nodiscard]] POINT GetXY(BOOL AddHalfSizeX = TRUE) const
   {
     POINT p = {int(x), int(y)};
     if (AddHalfSizeX)
@@ -64,9 +64,9 @@ public:
   }
   void Bounce();
   BOOL TestCollision(Sprite* ToTest) const;
-  BOOL IsItDone() const { return Done; }
+  [[nodiscard]] BOOL IsItDone() const { return Done; }
 
-  char GetType() const { return Type; }
+  [[nodiscard]] char GetType() const { return Type; }
   void SetType(char NewType) { Type = NewType; }
   void SetNewBBox(int x1, int y1, int x2, int y2)
   {
