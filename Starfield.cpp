@@ -1,7 +1,7 @@
 #include "Starfield.h"
 #include "Engine.h"
+#include <ctime>
 #include <ddraw.h>
-#include <time.h>
 
 STARCOLORS StarColors[MAX_SPEED];
 

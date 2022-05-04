@@ -8,7 +8,7 @@
 #include "Sprites.h"
 #include "Starfield.h"
 #include <Windows.h>
-#include <stdio.h>
+#include <cstdio>
 
 short FrameRate;
 

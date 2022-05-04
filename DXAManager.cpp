@@ -1,5 +1,5 @@
 #include "DXAManager.h"
-#include <stdio.h>
+#include <cstdio>
 
 BOOL DirectXAudioManager::Init(HWND hWnd, const char* SearchPath)
 {

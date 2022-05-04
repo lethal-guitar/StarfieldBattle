@@ -1,5 +1,5 @@
 #include "FXManager.h"
-#include <stdio.h>
+#include <cstdio>
 
 static LPDIRECTDRAWSURFACE7 lpDDSExplosion;
 
