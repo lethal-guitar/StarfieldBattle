@@ -6,9 +6,11 @@
 
 struct SpriteDescription
 {
-  LPDIRECTDRAWSURFACE7 lpDDS;
-  int FrameWidth, FrameHeight, FrameDelay;
-  BOOL Looped;
+  LPDIRECTDRAWSURFACE7 lpDDS = nullptr;
+  int FrameWidth = 0;
+  int FrameHeight = 0;
+  int FrameDelay = 0;
+  BOOL Looped = false;
 };
 
 class Sprite
@@ -76,9 +78,10 @@ public:
 class ASprite_NoList : public Sprite
 {
 private:
-  const char* ShotSnd;
-  int ShotDelay;
-  short Time, CurrentShotDelay;
+  const char* ShotSnd = nullptr;
+  int ShotDelay = 0;
+  short Time = 0;
+  short CurrentShotDelay = 0;
 
 public:
   void SetData(char Type, const char* Sound, int Delay)

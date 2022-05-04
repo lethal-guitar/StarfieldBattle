@@ -18,8 +18,8 @@ struct KeyActionMap
 class DirectInputManager
 {
 private:
-  LPDIRECTINPUT8 lpDI8;
-  LPDIRECTINPUTDEVICE8 lpDIDevice;
+  LPDIRECTINPUT8 lpDI8 = nullptr;
+  LPDIRECTINPUTDEVICE8 lpDIDevice = nullptr;
 
   BOOL InitKeyboard(HWND);
 

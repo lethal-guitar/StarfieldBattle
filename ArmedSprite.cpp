@@ -4,8 +4,6 @@ ArmedSprite::ArmedSprite()
 {
   ShotSpeed = MaxShots = NrShots = CurrentDelay = ShotDelay = ShotTime = 0;
   ShotSound = nullptr;
-
-  ZeroMemory(&ShotData, sizeof(ShotData));
 }
 
 void ArmedSprite::SetShotData(
