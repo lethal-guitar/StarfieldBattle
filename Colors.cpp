@@ -61,9 +61,9 @@ int CalcColor(unsigned const int r, unsigned const int g, unsigned const int b)
     {
       case 32:
       case 24:
-        return ((r << 16) + (g << 8) + b);
+        return static_cast<int>((r << 16) + (g << 8) + b);
       case 16:
-        return (
+        return static_cast<int>(
           (((r) >> ClVals.ShiftRed) << ClVals.PosRed) +
           (((g) >> ClVals.ShiftGreen) << ClVals.PosGreen) +
           (((b) >> ClVals.ShiftBlue) << ClVals.PosBlue));

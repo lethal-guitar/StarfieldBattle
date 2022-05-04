@@ -18,7 +18,7 @@ Star::Star()
 
 void Star::Move()
 {
-  y += dy / (FrameRate / 35);
+  y += dy / (float(FrameRate) / 35.0f);
 
   if (y >= SCR_HEIGHT - Length)
   {

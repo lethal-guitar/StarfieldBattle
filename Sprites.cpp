@@ -55,8 +55,8 @@ void Sprite::Create(
 
   lpDDSSprite->GetSurfaceDesc(&ddsd);
 
-  FramesX = ddsd.dwWidth / FrameWidth;
-  FramesY = ddsd.dwHeight / FrameHeight;
+  FramesX = static_cast<int>(ddsd.dwWidth) / FrameWidth;
+  FramesY = static_cast<int>(ddsd.dwHeight) / FrameHeight;
 
   DWORD ColorValue;
 
@@ -148,19 +148,19 @@ void Sprite::Draw(LPDIRECTDRAWSURFACE7 lpDDS)
 
 void Sprite::Bounce()
 {
-  x += float(float(StepX) / FrameRate);
-  y += float(float(StepY) / FrameRate);
+  x += float(float(StepX) / float(FrameRate));
+  y += float(float(StepY) / float(FrameRate));
 
-  if ((x + FrameWidth) > SCR_WIDTH || x < 0)
+  if ((int(x) + FrameWidth) > SCR_WIDTH || x < 0.0f)
   {
     StepX = -StepX;
-    x += float(float(StepX) / FrameRate);
+    x += float(float(StepX) / float(FrameRate));
   }
 
-  if ((y + FrameHeight) > SCR_HEIGHT || y < 0)
+  if ((int(y) + FrameHeight) > SCR_HEIGHT || y < 0.0f)
   {
     StepY = -StepY;
-    y += float(float(StepY) / FrameRate);
+    y += float(float(StepY) / float(FrameRate));
   }
 }
 

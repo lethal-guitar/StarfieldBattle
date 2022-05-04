@@ -36,9 +36,9 @@ public:
   }
   void Move(float MvX, float MvY)
   {
-    if ((x + MvX > 0) && (x + FrameWidth + MvX < SCR_WIDTH))
+    if ((x + MvX > 0) && (x + float(FrameWidth) + MvX < float(SCR_WIDTH)))
       x += MvX;
-    if ((y + MvY > 0) && (y + FrameHeight + MvY < SCR_HEIGHT))
+    if ((y + MvY > 0) && (y + float(FrameHeight) + MvY < float(SCR_HEIGHT)))
       y += MvY;
   }
   void Draw(LPDIRECTDRAWSURFACE7);
