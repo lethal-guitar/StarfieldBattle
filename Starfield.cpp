@@ -64,10 +64,9 @@ Starfield::Starfield(int NrStars, LPDIRECTDRAWSURFACE7 lpDDS)
 
 Starfield::~Starfield()
 {
-  if (nullptr != m_Stars)
-  {
-    delete[] m_Stars;
-  }
+
+
+  delete[] m_Stars;
 }
 
 void Starfield::Draw(BOOL FirstDraw)

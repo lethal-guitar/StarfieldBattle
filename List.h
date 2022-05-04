@@ -27,13 +27,7 @@ public:
     m_Next = m_Prev = nullptr;
   }
 
-  ~Knoten()
-  {
-    if (nullptr != m_Entry)
-    {
-      delete m_Entry;
-    }
-  }
+  ~Knoten() { delete m_Entry; }
 
   void* GetEntry()
   {
