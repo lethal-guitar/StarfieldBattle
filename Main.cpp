@@ -93,7 +93,7 @@ HWND CreateMainWindow(HINSTANCE hInstance)
   wndClass.cbClsExtra = 0;
   wndClass.cbWndExtra = 0;
   wndClass.hInstance = hInstance;
-  wndClass.hbrBackground = (HBRUSH)GetStockObject(BLACK_BRUSH);
+  wndClass.hbrBackground = static_cast<HBRUSH>(GetStockObject(BLACK_BRUSH));
   wndClass.hCursor = nullptr;
   wndClass.lpszMenuName = nullptr;
   wndClass.lpszClassName = "MyWndClass";
@@ -251,17 +251,17 @@ int WINAPI WinMain(
 
   short FrameCount = 0;
 
-  if (!QueryPerformanceFrequency((LARGE_INTEGER*)&Frequency))
+  if (!QueryPerformanceFrequency(reinterpret_cast<LARGE_INTEGER*>(&Frequency)))
   {
     Error("Performance-Counter nicht vorhanden!");
     return -1;
   }
 
-  QueryPerformanceCounter((LARGE_INTEGER*)&LastTime);
+  QueryPerformanceCounter(reinterpret_cast<LARGE_INTEGER*>(&LastTime));
 
   for (;;)
   {
-    QueryPerformanceCounter((LARGE_INTEGER*)&CurrentTime);
+    QueryPerformanceCounter(reinterpret_cast<LARGE_INTEGER*>(&CurrentTime));
 
     if (CurrentTime - LastTime > Frequency) // eine Sekunde ist vergangen
     {
@@ -355,7 +355,7 @@ int WINAPI WinMain(
 
   SetPriorityClass(GetCurrentProcess(), HIGH_PRIORITY_CLASS);
 
-  QueryPerformanceCounter((LARGE_INTEGER*)&LastTime);
+  QueryPerformanceCounter(reinterpret_cast<LARGE_INTEGER*>(&LastTime));
 
   while (msg.message != WM_QUIT)
   {
@@ -366,7 +366,7 @@ int WINAPI WinMain(
     }
     else
     {
-      QueryPerformanceCounter((LARGE_INTEGER*)&CurrentTime);
+      QueryPerformanceCounter(reinterpret_cast<LARGE_INTEGER*>(&CurrentTime));
 
       if (CurrentTime - LastTime > Frequency)
       {
@@ -721,7 +721,7 @@ int WINAPI WinMain(
                    ispunct(Typed)) &&
                   ScanCode != DIK_RETURN)
                 {
-                  PlayerName[WrittenChars] = (char)Typed;
+                  PlayerName[WrittenChars] = static_cast<char>(Typed);
                   PlayerName[WrittenChars + 1] = 0;
                   WrittenChars++;
                 }

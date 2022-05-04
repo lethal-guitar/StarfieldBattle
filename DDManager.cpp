@@ -93,8 +93,8 @@ LPDIRECTDRAWSURFACE7 DirectDrawManager::CreateSurfaceFromBitmap(
 
   LPDIRECTDRAWSURFACE7 lpDDSurface;
 
-  hBm = (HBITMAP)LoadImage(
-    nullptr, File, IMAGE_BITMAP, dWidth, dHeight, LR_LOADFROMFILE);
+  hBm = static_cast<HBITMAP>(
+    LoadImage(nullptr, File, IMAGE_BITMAP, dWidth, dHeight, LR_LOADFROMFILE));
 
   if (nullptr == hBm)
     return nullptr;

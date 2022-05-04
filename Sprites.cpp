@@ -158,8 +158,8 @@ BOOL Sprite::TestCollision(Sprite* ToTest) const
   int rx_ToTest = (r.right - r.left) / 2;
   int ry_ToTest = (r.bottom - r.top) / 2;
 
-  int crx = (int)x + rx;
-  int cry = (int)y + ry;
+  int crx = static_cast<int>(x) + rx;
+  int cry = static_cast<int>(y) + ry;
 
   int crx_ToTest = ToTest->GetXY(FALSE).x + rx_ToTest;
   int cry_ToTest = ToTest->GetXY().y + ry_ToTest;

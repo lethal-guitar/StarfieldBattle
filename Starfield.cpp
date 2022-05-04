@@ -7,13 +7,13 @@ STARCOLORS StarColors[MAX_SPEED];
 
 Star::Star()
 {
-  x = (float)(rand() % SCR_WIDTH);
-  y = (float)(rand() % SCR_HEIGHT);
+  x = static_cast<float>(rand() % SCR_WIDTH);
+  y = static_cast<float>(rand() % SCR_HEIGHT);
 
-  dy = (float)(rand() % MAX_SPEED + 1);
+  dy = static_cast<float>(rand() % MAX_SPEED + 1);
   dy /= 10;
 
-  Length = (int)(dy + 1);
+  Length = static_cast<int>(dy + 1);
 }
 
 void Star::Move()
@@ -22,20 +22,20 @@ void Star::Move()
 
   if (y >= SCR_HEIGHT - Length)
   {
-    x = (float)(rand() % SCR_WIDTH);
+    x = static_cast<float>(rand() % SCR_WIDTH);
 
-    dy = (float)(rand() % MAX_SPEED + 1);
+    dy = static_cast<float>(rand() % MAX_SPEED + 1);
     dy /= 10;
 
     y = dy;
 
-    Length = (int)(dy + 1);
+    Length = static_cast<int>(dy + 1);
   }
 }
 
 void Star::Draw(int Pitch, WORD* wlpSurface) const
 {
-  int index = ((int)y * Pitch + (int)x);
+  int index = (static_cast<int>(y) * Pitch + static_cast<int>(x));
 
   for (int i = 0; i < Length; i++)
   {
@@ -47,7 +47,7 @@ void Star::Draw(int Pitch, WORD* wlpSurface) const
 Starfield::Starfield(int NrStars, LPDIRECTDRAWSURFACE7 lpDDS)
 {
   DeterminePixelFormat(m_lpDDS = lpDDS);
-  srand((unsigned)time(nullptr));
+  srand(static_cast<unsigned>(time(nullptr)));
 
   m_Stars = new Star[m_NrStars = NrStars];
 
@@ -78,7 +78,7 @@ void Starfield::Draw(BOOL FirstDraw)
 
   m_lpDDS->Lock(nullptr, &ddsd, DDLOCK_WAIT, nullptr);
 
-  WORD* wlpSurface = (WORD*)ddsd.lpSurface;
+  WORD* wlpSurface = static_cast<WORD*>(ddsd.lpSurface);
 
   int Pitch = ddsd.lPitch / 2;
 

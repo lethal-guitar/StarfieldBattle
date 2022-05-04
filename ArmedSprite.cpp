@@ -42,7 +42,7 @@ void ArmedSprite::DrawShots(LPDIRECTDRAWSURFACE7 lpDDS)
 
   while (nullptr != ShotList.GetCurrent())
   {
-    Shot = (Sprite*)ShotList.GetCurrent()->GetEntry();
+    Shot = static_cast<Sprite*>(ShotList.GetCurrent()->GetEntry());
 
     if (Shot == nullptr)
     {
@@ -105,7 +105,7 @@ BOOL ArmedSprite::TestShotCollision(Sprite* ToTest)
 
   while (nullptr != ShotList.GetCurrent())
   {
-    Shot = (Sprite*)ShotList.GetCurrent()->GetEntry();
+    Shot = static_cast<Sprite*>(ShotList.GetCurrent()->GetEntry());
 
     if (nullptr == Shot)
     {

@@ -33,7 +33,7 @@ void SpriteManager::MoveAndShoot(BOOL Move)
 
   while (nullptr != SpriteList.GetCurrent())
   {
-    Spr = (ASprite*)SpriteList.GetCurrent()->GetEntry();
+    Spr = static_cast<ASprite*>(SpriteList.GetCurrent()->GetEntry());
 
     if (Spr->GetType() == 4)
     {
@@ -77,7 +77,8 @@ void SpriteManager::MoveAndShoot(BOOL Move)
   {
     SpriteList.FirstKnoten();
 
-    while (((Sprite*)SpriteList.GetCurrent()->GetEntry()) != ShotsToDel[i])
+    while ((static_cast<Sprite*>(SpriteList.GetCurrent()->GetEntry())) !=
+           ShotsToDel[i])
     {
       if (!SpriteList.NextKnoten())
         goto end;
@@ -120,7 +121,7 @@ int SpriteManager::TestCollisions(ArmedSprite* ToTest, int* pScoreAmount)
 
   for (int i = 0; i < NrSprites + NrShots; i++)
   {
-    Spr = (ASprite*)SpriteList.GetCurrent()->GetEntry();
+    Spr = static_cast<ASprite*>(SpriteList.GetCurrent()->GetEntry());
 
     char NrQuad1 = 1, NrQuad2 = 1;
 
@@ -192,7 +193,9 @@ void SpriteManager::ReInit(int NrEnemys)
   {
     while (nullptr != SpriteList.GetCurrent())
     {
-      if (((Sprite*)SpriteList.GetCurrent()->GetEntry())->GetType() == 4)
+      if (
+        (static_cast<Sprite*>(SpriteList.GetCurrent()->GetEntry()))
+          ->GetType() == 4)
       {
         SpriteList.DeleteKnoten();
         NrShots--;
@@ -224,7 +227,7 @@ void SpriteManager::AddEnemys(int Nr)
   {
     if (NrSprites < MAX_ENEMYS)
     {
-      char Rnd = (char)(rand() % 3 + 1);
+      char Rnd = static_cast<char>(rand() % 3 + 1);
 
       auto* Spr = new ASprite;
 

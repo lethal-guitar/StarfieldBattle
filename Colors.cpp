@@ -21,7 +21,7 @@ void DeterminePixelFormat(LPDIRECTDRAWSURFACE7 lpDDS)
   ddpf.dwSize = sizeof(ddpf);
   lpDDS->GetPixelFormat(&ddpf);
 
-  ClVals.ColorDepth = (unsigned short)ddpf.dwRGBBitCount;
+  ClVals.ColorDepth = static_cast<unsigned short>(ddpf.dwRGBBitCount);
 
   while ((ddpf.dwRBitMask & 1) == 0)
   {
