@@ -17,8 +17,8 @@ private:
 public:
   FXManager(void)
   {
-    m_lpDDS = NULL;
-    m_SpriteArray = NULL;
+    m_lpDDS = nullptr;
+    m_SpriteArray = nullptr;
     m_MaxFX = m_FXNr = 0;
   }
   ~FXManager() { delete[] m_SpriteArray; }

@@ -2,15 +2,15 @@
 
 BOOL DirectInputManager::Init(HWND hWnd, HINSTANCE hInstance)
 {
-  lpDI8 = NULL;
-  lpDIDevice = NULL;
+  lpDI8 = nullptr;
+  lpDIDevice = nullptr;
 
   if (FAILED(DirectInput8Create(
         hInstance,
         DIRECTINPUT_VERSION,
         IID_IDirectInput8,
         (void**)&lpDI8,
-        NULL)))
+        nullptr)))
   {
     return Error("DirectInput-Instanz konnte nicht erzeugt werden");
   }
@@ -58,23 +58,23 @@ int DirectInputManager::GetInput(KeyActionMap KeyMap)
 
 DirectInputManager::~DirectInputManager()
 {
-  if (NULL != lpDIDevice)
+  if (nullptr != lpDIDevice)
   {
     lpDIDevice->Unacquire();
     lpDIDevice->Release();
-    lpDIDevice = NULL;
+    lpDIDevice = nullptr;
   }
 
-  if (NULL != lpDI8)
+  if (nullptr != lpDI8)
   {
     lpDI8->Release();
-    lpDI8 = NULL;
+    lpDI8 = nullptr;
   }
 }
 
 BOOL DirectInputManager::InitKeyboard(HWND hWnd)
 {
-  if (FAILED(lpDI8->CreateDevice(GUID_SysKeyboard, &lpDIDevice, NULL)))
+  if (FAILED(lpDI8->CreateDevice(GUID_SysKeyboard, &lpDIDevice, nullptr)))
   {
     return FALSE;
   }
@@ -132,5 +132,5 @@ void DirectInputManager::Flush()
 {
   DWORD dwTmp = INFINITE;
 
-  lpDIDevice->GetDeviceData(sizeof(DIDEVICEOBJECTDATA), NULL, &dwTmp, 0);
+  lpDIDevice->GetDeviceData(sizeof(DIDEVICEOBJECTDATA), nullptr, &dwTmp, 0);
 }

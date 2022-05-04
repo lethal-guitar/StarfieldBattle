@@ -2,19 +2,20 @@
 
 BOOL DirectDrawManager::Init(HWND hWnd)
 {
-  lpDD7 = NULL;
-  lpDDSPrimary = NULL;
-  lpDDSBackBuffer = NULL;
+  lpDD7 = nullptr;
+  lpDDSPrimary = nullptr;
+  lpDDSBackBuffer = nullptr;
 
   for (int i = 0; i < MAX_SURFACES; i++)
   {
-    SurfacesToRelease[i] = NULL;
+    SurfacesToRelease[i] = nullptr;
   }
 
   ZeroMemory(&BlitFX, sizeof(BlitFX));
   BlitFX.dwSize = sizeof(BlitFX);
 
-  if (FAILED(DirectDrawCreateEx(NULL, (void**)&lpDD7, IID_IDirectDraw7, NULL)))
+  if (FAILED(
+        DirectDrawCreateEx(nullptr, (void**)&lpDD7, IID_IDirectDraw7, nullptr)))
     return Error("DirectDraw-Objekt konnte nicht angelegt werden");
 
   if (FAILED(lpDD7->SetCooperativeLevel(
@@ -36,7 +37,7 @@ BOOL DirectDrawManager::Init(HWND hWnd)
 
   ddsd.dwBackBufferCount = 1;
 
-  if (FAILED(lpDD7->CreateSurface(&ddsd, &lpDDSPrimary, NULL)))
+  if (FAILED(lpDD7->CreateSurface(&ddsd, &lpDDSPrimary, nullptr)))
     return Error("Primäre Oberfläche konnte nicht erzeugt werden");
 
   ddsd.ddsCaps.dwCaps = DDSCAPS_BACKBUFFER;
@@ -52,29 +53,29 @@ DirectDrawManager::~DirectDrawManager()
 {
   for (int i = 0; i < MAX_SURFACES; i++)
   {
-    if (NULL != SurfacesToRelease[i])
+    if (nullptr != SurfacesToRelease[i])
     {
       SurfacesToRelease[i]->Release();
-      SurfacesToRelease[i] = NULL;
+      SurfacesToRelease[i] = nullptr;
     }
   }
 
-  if (NULL != lpDDSBackBuffer)
+  if (nullptr != lpDDSBackBuffer)
   {
     lpDDSBackBuffer->Release();
-    lpDDSBackBuffer = NULL;
+    lpDDSBackBuffer = nullptr;
   }
 
-  if (NULL != lpDDSPrimary)
+  if (nullptr != lpDDSPrimary)
   {
     lpDDSPrimary->Release();
-    lpDDSPrimary = NULL;
+    lpDDSPrimary = nullptr;
   }
 
-  if (NULL != lpDD7)
+  if (nullptr != lpDD7)
   {
     lpDD7->Release();
-    lpDD7 = NULL;
+    lpDD7 = nullptr;
   }
 }
 
@@ -93,23 +94,23 @@ LPDIRECTDRAWSURFACE7 DirectDrawManager::CreateSurfaceFromBitmap(
   LPDIRECTDRAWSURFACE7 lpDDSurface;
 
   hBm = (HBITMAP)LoadImage(
-    NULL, File, IMAGE_BITMAP, dWidth, dHeight, LR_LOADFROMFILE);
+    nullptr, File, IMAGE_BITMAP, dWidth, dHeight, LR_LOADFROMFILE);
 
-  if (NULL == hBm)
-    return NULL;
+  if (nullptr == hBm)
+    return nullptr;
 
   ddsd.dwFlags = DDSD_CAPS | DDSD_HEIGHT | DDSD_WIDTH;
   ddsd.ddsCaps.dwCaps = DDSCAPS_OFFSCREENPLAIN;
   ddsd.dwWidth = dWidth;
   ddsd.dwHeight = dHeight;
 
-  if (FAILED(lpDD7->CreateSurface(&ddsd, &lpDDSurface, NULL)))
-    return NULL;
+  if (FAILED(lpDD7->CreateSurface(&ddsd, &lpDDSurface, nullptr)))
+    return nullptr;
 
   if (FAILED(lpDDSurface->GetDC(&hSDC)))
   {
     lpDDSurface->Release();
-    return NULL;
+    return nullptr;
   }
 
   hBmDC = CreateCompatibleDC(hSDC);
@@ -119,7 +120,7 @@ LPDIRECTDRAWSURFACE7 DirectDrawManager::CreateSurfaceFromBitmap(
   if (FAILED(BitBlt(hSDC, 0, 0, dWidth, dHeight, hBmDC, 0, 0, SRCCOPY)))
   {
     lpDDSurface->Release();
-    return NULL;
+    return nullptr;
   }
 
   lpDDSurface->ReleaseDC(hSDC);
@@ -130,18 +131,18 @@ LPDIRECTDRAWSURFACE7 DirectDrawManager::CreateSurfaceFromBitmap(
   int i;
   for (i = 0; i < MAX_SURFACES; i++)
   {
-    if (NULL == SurfacesToRelease[i])
+    if (nullptr == SurfacesToRelease[i])
     {
       break;
     }
   }
 
-  if (NULL != SurfacesToRelease[i])
+  if (nullptr != SurfacesToRelease[i])
   {
     Error(
       "DirectDraw: Oberfläche kann nicht hinzugefügt werden, Maximale Anzahl Oberflächen erreicht");
     lpDDSurface->Release();
-    return NULL;
+    return nullptr;
   }
 
   SurfacesToRelease[i] = lpDDSurface;

@@ -3,23 +3,23 @@
 
 BOOL DirectXAudioManager::Init(HWND hWnd, const char* SearchPath)
 {
-  lpDMPerformance = NULL;
-  lpDMLoader = NULL;
-  lpDMSegBackgroundMusic = NULL;
+  lpDMPerformance = nullptr;
+  lpDMLoader = nullptr;
+  lpDMSegBackgroundMusic = nullptr;
   SndNr = 0;
 
   for (int i = 0; i < 10; i++)
   {
-    lpDMSegSoundFX[i] = NULL;
-    SndFX[i] = NULL;
+    lpDMSegSoundFX[i] = nullptr;
+    SndFX[i] = nullptr;
   }
 
-  if (FAILED(CoInitialize(NULL)))
+  if (FAILED(CoInitialize(nullptr)))
     return Error("Konnte COM-Bibliothek nicht initialisieren");
 
   if (FAILED(CoCreateInstance(
         CLSID_DirectMusicPerformance,
-        NULL,
+        nullptr,
         CLSCTX_INPROC,
         IID_IDirectMusicPerformance8,
         (void**)&lpDMPerformance)))
@@ -27,20 +27,20 @@ BOOL DirectXAudioManager::Init(HWND hWnd, const char* SearchPath)
 
   if (FAILED(CoCreateInstance(
         CLSID_DirectMusicLoader,
-        NULL,
+        nullptr,
         CLSCTX_INPROC,
         IID_IDirectMusicLoader8,
         (void**)&lpDMLoader)))
     return Error("DirectMusic-Loader konnte nicht erzeugt werden");
 
   if (FAILED(lpDMPerformance->InitAudio(
-        NULL,
-        NULL,
+        nullptr,
+        nullptr,
         hWnd,
         DMUS_APATH_DYNAMIC_STEREO,
         32,
         DMUS_AUDIOF_ALL,
-        NULL)))
+        nullptr)))
     return Error("Performance konnte nicht initialisiert werden");
 
   WCHAR wstrString[MAX_PATH];
@@ -58,31 +58,31 @@ DirectXAudioManager::~DirectXAudioManager()
 {
   for (int i = 0; i < 10; i++)
   {
-    if (NULL != lpDMSegSoundFX[i])
+    if (nullptr != lpDMSegSoundFX[i])
     {
       lpDMSegSoundFX[i]->Release();
-      lpDMSegSoundFX[i] = NULL;
+      lpDMSegSoundFX[i] = nullptr;
     }
   }
 
-  if (NULL != lpDMSegBackgroundMusic)
+  if (nullptr != lpDMSegBackgroundMusic)
   {
     lpDMSegBackgroundMusic->Release();
-    lpDMSegBackgroundMusic = NULL;
+    lpDMSegBackgroundMusic = nullptr;
   }
 
-  if (NULL != lpDMPerformance)
+  if (nullptr != lpDMPerformance)
   {
-    lpDMPerformance->Stop(NULL, NULL, 0, 0);
+    lpDMPerformance->Stop(nullptr, nullptr, 0, 0);
     lpDMPerformance->CloseDown();
     lpDMPerformance->Release();
-    lpDMPerformance = NULL;
+    lpDMPerformance = nullptr;
   }
 
-  if (NULL != lpDMLoader)
+  if (nullptr != lpDMLoader)
   {
     lpDMLoader->Release();
-    lpDMLoader = NULL;
+    lpDMLoader = nullptr;
   }
 
   CoUninitialize();
@@ -104,10 +104,10 @@ BOOL DirectXAudioManager::AddBGMusic(const char* Filename)
       "Musik-Datei nicht gefunden! (oder falsches Format, beschädigte Datei o.a.)");
   }
 
-  if (NULL != lpDMSegBackgroundMusic)
+  if (nullptr != lpDMSegBackgroundMusic)
   {
     lpDMSegBackgroundMusic->SetParam(
-      GUID_StandardMIDIFile, 0xFFFFFFFF, DMUS_SEG_ALLTRACKS, 0, NULL);
+      GUID_StandardMIDIFile, 0xFFFFFFFF, DMUS_SEG_ALLTRACKS, 0, nullptr);
     lpDMSegBackgroundMusic->Download(lpDMPerformance);
     lpDMSegBackgroundMusic->SetRepeats(DMUS_SEG_REPEAT_INFINITE);
   }
@@ -131,7 +131,7 @@ BOOL DirectXAudioManager::AddSndFX(const char* Filename)
       "Sound-Datei nicht gefunden! (oder falsches Format, beschädigte Datei o.a.");
   }
 
-  if (NULL != lpDMSegSoundFX[SndNr])
+  if (nullptr != lpDMSegSoundFX[SndNr])
   {
     lpDMSegSoundFX[SndNr]->Download(lpDMPerformance);
 
@@ -145,7 +145,7 @@ BOOL DirectXAudioManager::AddSndFX(const char* Filename)
 
 void DirectXAudioManager::PlaySndFX(const char* Name)
 {
-  if (NULL != Name)
+  if (nullptr != Name)
   {
     int i;
     for (i = 0; i < 10; i++)
@@ -166,7 +166,14 @@ void DirectXAudioManager::PlaySndFX(const char* Name)
     }
 
     lpDMPerformance->PlaySegmentEx(
-      lpDMSegSoundFX[i], NULL, NULL, DMUS_SEGF_SECONDARY, 0, NULL, NULL, NULL);
+      lpDMSegSoundFX[i],
+      nullptr,
+      nullptr,
+      DMUS_SEGF_SECONDARY,
+      0,
+      nullptr,
+      nullptr,
+      nullptr);
   }
 }
 

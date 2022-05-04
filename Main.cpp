@@ -17,7 +17,7 @@ short FrameRate;
 #define MAX_HISCORE_ENTRYS 10
 #define MULTIPLAYER_START_TIME 180
 
-HWND hWnd = NULL;
+HWND hWnd = nullptr;
 
 DirectDrawManager DDM;
 DirectXAudioManager DMM;
@@ -89,11 +89,11 @@ HWND CreateMainWindow(HINSTANCE hInstance)
   wndClass.cbWndExtra = 0;
   wndClass.hInstance = hInstance;
   wndClass.hbrBackground = (HBRUSH)GetStockObject(BLACK_BRUSH);
-  wndClass.hCursor = NULL;
-  wndClass.lpszMenuName = NULL;
+  wndClass.hCursor = nullptr;
+  wndClass.lpszMenuName = nullptr;
   wndClass.lpszClassName = "MyWndClass";
-  wndClass.hIcon = LoadIcon(NULL, IDI_WINLOGO);
-  wndClass.hIconSm = LoadIcon(NULL, IDI_WINLOGO);
+  wndClass.hIcon = LoadIcon(nullptr, IDI_WINLOGO);
+  wndClass.hIconSm = LoadIcon(nullptr, IDI_WINLOGO);
 
   RegisterClassEx(&wndClass);
 
@@ -106,10 +106,10 @@ HWND CreateMainWindow(HINSTANCE hInstance)
     0,
     0,
     0,
-    NULL,
-    NULL,
+    nullptr,
+    nullptr,
     hInstance,
-    NULL);
+    nullptr);
 }
 
 void ShowText(
@@ -148,7 +148,7 @@ static int Scan2Ascii(DWORD Scancode, USHORT* Result)
 
 BOOL DoMainInits(void)
 {
-  SetCursor(NULL);
+  SetCursor(nullptr);
 
   if (!DDM.Init(hWnd))
     return Error("Fehler beim Initialisieren von DirectDraw");
@@ -185,7 +185,7 @@ int WINAPI WinMain(
 {
   hWnd = CreateMainWindow(hInstance);
 
-  if (NULL == hWnd)
+  if (nullptr == hWnd)
   {
     Error("Fenster konnte nicht erzeugt werden!");
     return -1;
@@ -303,7 +303,7 @@ int WINAPI WinMain(
   HiScoreEntry Entrys[MAX_HISCORE_ENTRYS];
   FILE* fScoreList = fopen("Scores.dat", "rb");
 
-  if (NULL == fScoreList)
+  if (nullptr == fScoreList)
   {
     int tmp = 10 * MAX_HISCORE_ENTRYS;
 
@@ -354,7 +354,7 @@ int WINAPI WinMain(
 
   while (msg.message != WM_QUIT)
   {
-    if (PeekMessage(&msg, NULL, 0, 0, PM_REMOVE))
+    if (PeekMessage(&msg, nullptr, 0, 0, PM_REMOVE))
     {
       TranslateMessage(&msg);
       DispatchMessage(&msg);
@@ -909,7 +909,7 @@ int WINAPI WinMain(
 
   fScoreList = fopen("Scores.dat", "wb");
 
-  if (NULL != fScoreList)
+  if (nullptr != fScoreList)
   {
     fwrite(Entrys, sizeof(HiScoreEntry), MAX_HISCORE_ENTRYS, fScoreList);
     fclose(fScoreList);

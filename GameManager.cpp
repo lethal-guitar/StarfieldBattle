@@ -27,11 +27,11 @@ void SpriteManager::MoveAndShoot(BOOL Move)
 
   SpriteList.FirstKnoten();
 
-  ASprite* Spr = NULL;
+  ASprite* Spr = nullptr;
   Sprite* ShotsToDel[MAX_SHOTS];
   unsigned char Index = 0;
 
-  while (NULL != SpriteList.GetCurrent())
+  while (nullptr != SpriteList.GetCurrent())
   {
     Spr = (ASprite*)SpriteList.GetCurrent()->GetEntry();
 
@@ -92,19 +92,19 @@ void SpriteManager::MoveAndShoot(BOOL Move)
 
 void SpriteManager::Init(int NrEnemys, LPDIRECTDRAWSURFACE7 lpDDS)
 {
-  if (NULL == lpDDSEnemy1)
+  if (nullptr == lpDDSEnemy1)
     lpDDSEnemy1 = DDM.CreateSurfaceFromBitmap("Sprites\\Enemy1.bmp", 240, 60);
 
-  if (NULL == lpDDSEnemy2)
+  if (nullptr == lpDDSEnemy2)
     lpDDSEnemy2 = DDM.CreateSurfaceFromBitmap("Sprites\\Enemy2.bmp", 45, 40);
 
-  if (NULL == lpDDSEnemy3)
+  if (nullptr == lpDDSEnemy3)
     lpDDSEnemy3 = DDM.CreateSurfaceFromBitmap("Sprites\\Enemy3.bmp", 280, 100);
 
-  if (NULL == lpDDSEmShot)
+  if (nullptr == lpDDSEmShot)
     lpDDSEmShot = DDM.CreateSurfaceFromBitmap("Sprites\\EmShoot.bmp", 60, 20);
 
-  if (NULL == this->lpDDS)
+  if (nullptr == this->lpDDS)
     this->lpDDS = lpDDS;
 
   AddEnemys(NrEnemys);
@@ -170,7 +170,7 @@ int SpriteManager::TestCollisions(ArmedSprite* ToTest, int* pScoreAmount)
 
         ret += PLAYER_HAS_SCORED;
 
-        if (NULL != pScoreAmount)
+        if (nullptr != pScoreAmount)
         {
           *pScoreAmount = Type;
         }
@@ -190,7 +190,7 @@ void SpriteManager::ReInit(int NrEnemys)
 {
   if (NrShots > 0)
   {
-    while (NULL != SpriteList.GetCurrent())
+    while (nullptr != SpriteList.GetCurrent())
     {
       if (((Sprite*)SpriteList.GetCurrent()->GetEntry())->GetType() == 4)
       {

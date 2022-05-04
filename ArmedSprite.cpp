@@ -3,7 +3,7 @@
 ArmedSprite::ArmedSprite(void)
 {
   ShotSpeed = MaxShots = NrShots = CurrentDelay = ShotDelay = ShotTime = 0;
-  ShotSound = NULL;
+  ShotSound = nullptr;
 
   ZeroMemory(&ShotData, sizeof(ShotData));
 }
@@ -42,11 +42,11 @@ void ArmedSprite::DrawShots(LPDIRECTDRAWSURFACE7 lpDDS)
   Sprite* Shot;
   ShotList.FirstKnoten();
 
-  while (NULL != ShotList.GetCurrent())
+  while (nullptr != ShotList.GetCurrent())
   {
     Shot = (Sprite*)ShotList.GetCurrent()->GetEntry();
 
-    if (Shot == NULL)
+    if (Shot == nullptr)
     {
       return;
     }
@@ -105,11 +105,11 @@ BOOL ArmedSprite::TestShotCollision(Sprite* ToTest)
   Sprite* Shot;
   ShotList.FirstKnoten();
 
-  while (NULL != ShotList.GetCurrent())
+  while (nullptr != ShotList.GetCurrent())
   {
     Shot = (Sprite*)ShotList.GetCurrent()->GetEntry();
 
-    if (NULL == Shot)
+    if (nullptr == Shot)
     {
       Error("Interner Fehler: TestShotCollision: Kein gültiger Zeiger");
       return FALSE;
@@ -134,7 +134,7 @@ void ArmedSprite::ClearShotList(void)
 {
   ShotList.FirstKnoten();
 
-  while (NULL != ShotList.GetCurrent())
+  while (nullptr != ShotList.GetCurrent())
   {
     ShotList.DeleteKnoten();
 

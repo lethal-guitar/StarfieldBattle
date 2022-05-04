@@ -29,13 +29,13 @@ public:
   {
     lpDMPerformance->PlaySegmentEx(
       lpDMSegBackgroundMusic,
-      NULL,
-      NULL,
+      nullptr,
+      nullptr,
       DMUS_SEGF_DEFAULT,
       0,
-      NULL,
-      NULL,
-      NULL);
+      nullptr,
+      nullptr,
+      nullptr);
   }
   void PlaySndFX(const char* Name);
 };

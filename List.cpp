@@ -4,7 +4,7 @@ void List::Add(void* NewEntry)
 {
   Knoten* NewKnoten = new Knoten(NewEntry);
 
-  if (NULL == Start)
+  if (nullptr == Start)
   {
     Start = End = NewKnoten;
   }
@@ -18,22 +18,22 @@ void List::Add(void* NewEntry)
 
 void List::Delete(void)
 {
-  if (NULL != End)
+  if (nullptr != End)
   {
     while (End->GetPrev())
     {
       End = End->GetPrev();
       delete End->GetNext();
-      End->SetNext(NULL);
+      End->SetNext(nullptr);
     }
   }
 }
 
 BOOL List::NextKnoten(void)
 {
-  if (NULL != CurrentKnoten)
+  if (nullptr != CurrentKnoten)
   {
-    if (NULL != CurrentKnoten->GetNext())
+    if (nullptr != CurrentKnoten->GetNext())
     {
       CurrentKnoten = CurrentKnoten->GetNext();
       return TRUE;
@@ -45,9 +45,9 @@ BOOL List::NextKnoten(void)
 
 BOOL List::PrevKnoten(void)
 {
-  if (NULL != CurrentKnoten)
+  if (nullptr != CurrentKnoten)
   {
-    if (NULL != CurrentKnoten->GetPrev())
+    if (nullptr != CurrentKnoten->GetPrev())
     {
       CurrentKnoten = CurrentKnoten->GetPrev();
       return TRUE;
@@ -59,7 +59,7 @@ BOOL List::PrevKnoten(void)
 
 void List::DeleteKnoten(void)
 {
-  if (NULL != CurrentKnoten)
+  if (nullptr != CurrentKnoten)
   {
     if (CurrentKnoten == End)
     {
@@ -67,13 +67,13 @@ void List::DeleteKnoten(void)
       delete End;
       End = CurrentKnoten;
 
-      if (End == NULL)
+      if (End == nullptr)
       {
-        Start = NULL;
+        Start = nullptr;
       }
       else
       {
-        End->SetNext(NULL);
+        End->SetNext(nullptr);
       }
     }
     else if (CurrentKnoten == Start)
@@ -82,13 +82,13 @@ void List::DeleteKnoten(void)
       delete Start;
       Start = CurrentKnoten;
 
-      if (Start == NULL)
+      if (Start == nullptr)
       {
-        End = NULL;
+        End = nullptr;
       }
       else
       {
-        Start->SetPrev(NULL);
+        Start->SetPrev(nullptr);
       }
     }
     else
@@ -106,7 +106,7 @@ void List::DeleteKnoten(void)
 
 void List::ReplaceCurrent(void* NewEntry)
 {
-  if (NULL != CurrentKnoten)
+  if (nullptr != CurrentKnoten)
   {
     if (CurrentKnoten == End)
     {
@@ -114,7 +114,7 @@ void List::ReplaceCurrent(void* NewEntry)
       delete End;
 
       End = new Knoten(NewEntry);
-      End->SetNext(NULL);
+      End->SetNext(nullptr);
       End->SetPrev(CurrentKnoten);
     }
     else if (CurrentKnoten == Start)
@@ -124,7 +124,7 @@ void List::ReplaceCurrent(void* NewEntry)
 
       Start = new Knoten(NewEntry);
       Start->SetNext(CurrentKnoten);
-      Start->SetPrev(NULL);
+      Start->SetPrev(nullptr);
     }
     else
     {

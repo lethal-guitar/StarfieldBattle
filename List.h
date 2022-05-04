@@ -18,18 +18,18 @@ class Knoten
 public:
   Knoten(void)
   {
-    m_Entry = NULL;
-    m_Next = m_Prev = NULL;
+    m_Entry = nullptr;
+    m_Next = m_Prev = nullptr;
   }
   Knoten(void* Entry)
   {
     m_Entry = Entry;
-    m_Next = m_Prev = NULL;
+    m_Next = m_Prev = nullptr;
   }
 
   ~Knoten()
   {
-    if (NULL != m_Entry)
+    if (nullptr != m_Entry)
     {
       delete m_Entry;
     }
@@ -37,13 +37,13 @@ public:
 
   void* GetEntry(void)
   {
-    if (NULL != m_Entry)
+    if (nullptr != m_Entry)
     {
       return m_Entry;
     }
     else
     {
-      return NULL;
+      return nullptr;
     }
   }
 
@@ -61,7 +61,7 @@ class List
   Knoten* CurrentKnoten;
 
 public:
-  List(void) { Start = End = CurrentKnoten = NULL; }
+  List(void) { Start = End = CurrentKnoten = nullptr; }
   ~List() { Delete(); }
 
   void Add(void* NewEntry);

@@ -23,7 +23,7 @@ public:
   SpriteManager(void)
   {
     NrSprites = NrShots = NewSprTime = 0;
-    lpDDS = NULL;
+    lpDDS = nullptr;
     Times = 0;
   }
   ~SpriteManager() { SpriteList.Delete(); }

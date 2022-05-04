@@ -4,7 +4,7 @@
 
 Sprite::Sprite(void)
 {
-  lpDDSSprite = NULL;
+  lpDDSSprite = nullptr;
   Looped = Done = TRUE;
   Continue = FALSE;
   FrameWidth = FrameHeight = FrameDelay = Delay = CurrentFrameX =
@@ -34,7 +34,7 @@ void Sprite::Create(
 
   lpDDSSprite = lpDDS;
 
-  if (NULL == lpDDSSprite)
+  if (nullptr == lpDDSSprite)
   {
     Error("Sprite konnte nicht erzeugt werden. Problem: Es wurde keine gültige\
 		             Oberfläche übergeben.");
@@ -63,11 +63,11 @@ void Sprite::Create(
   ZeroMemory(&ddsd, sizeof(ddsd));
   ddsd.dwSize = sizeof(ddsd);
 
-  lpDDSSprite->Lock(NULL, &ddsd, DDLOCK_WAIT, NULL);
+  lpDDSSprite->Lock(nullptr, &ddsd, DDLOCK_WAIT, nullptr);
 
   ColorValue = DWORD(*PWORD(ddsd.lpSurface));
 
-  lpDDSSprite->Unlock(NULL);
+  lpDDSSprite->Unlock(nullptr);
 
   DDCOLORKEY ddck;
   ddck.dwColorSpaceLowValue = ddck.dwColorSpaceHighValue = ColorValue;

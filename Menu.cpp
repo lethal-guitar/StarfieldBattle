@@ -2,7 +2,7 @@
 
 GameMenu::GameMenu(void)
 {
-  lpDDSMenuItemsSource = NULL;
+  lpDDSMenuItemsSource = nullptr;
   iNrItems = iCurrentItem = 0;
   bMenuActive = TRUE;
   ZeroMemory(&rMenuItemBBox, sizeof(rMenuItemBBox));

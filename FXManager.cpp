@@ -8,7 +8,7 @@ void FXManager::Init(int MaxFX, LPDIRECTDRAWSURFACE7 lpDDS)
   lpDDSExplosion =
     DDM.CreateSurfaceFromBitmap("Sprites\\Explosion.bmp", 640, 240);
 
-  if (NULL == lpDDS)
+  if (nullptr == lpDDS)
   {
     Error("FXManager: Es wurde keine gültige Oberfläche übergeben");
   }

@@ -26,13 +26,13 @@ public:
   {
     BlitFX.dwFillColor = Color;
     lpDDSBackBuffer->Blt(
-      NULL, NULL, NULL, DDBLT_COLORFILL | DDBLT_WAIT, &BlitFX);
+      nullptr, nullptr, nullptr, DDBLT_COLORFILL | DDBLT_WAIT, &BlitFX);
   }
 
-  void Flip(void) { lpDDSPrimary->Flip(NULL, DDFLIP_WAIT); }
+  void Flip(void) { lpDDSPrimary->Flip(nullptr, DDFLIP_WAIT); }
   void CopyPrimaryToBackBuffer(void)
   {
-    lpDDSBackBuffer->BltFast(0, 0, lpDDSPrimary, NULL, DDBLTFAST_WAIT);
+    lpDDSBackBuffer->BltFast(0, 0, lpDDSPrimary, nullptr, DDBLTFAST_WAIT);
   }
 
   LPDIRECTDRAWSURFACE7 GetBuffer(void) { return lpDDSBackBuffer; }

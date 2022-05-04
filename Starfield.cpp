@@ -47,7 +47,7 @@ void Star::Draw(int Pitch, WORD* wlpSurface)
 Starfield::Starfield(int NrStars, LPDIRECTDRAWSURFACE7 lpDDS)
 {
   DeterminePixelFormat(m_lpDDS = lpDDS);
-  srand((unsigned)time(NULL));
+  srand((unsigned)time(nullptr));
 
   m_Stars = new Star[m_NrStars = NrStars];
 
@@ -64,7 +64,7 @@ Starfield::Starfield(int NrStars, LPDIRECTDRAWSURFACE7 lpDDS)
 
 Starfield::~Starfield()
 {
-  if (NULL != m_Stars)
+  if (nullptr != m_Stars)
   {
     delete[] m_Stars;
   }
@@ -77,7 +77,7 @@ void Starfield::Draw(BOOL FirstDraw)
   ZeroMemory(&ddsd, sizeof(ddsd));
   ddsd.dwSize = sizeof(ddsd);
 
-  m_lpDDS->Lock(NULL, &ddsd, DDLOCK_WAIT, NULL);
+  m_lpDDS->Lock(nullptr, &ddsd, DDLOCK_WAIT, nullptr);
 
   WORD* wlpSurface = (WORD*)ddsd.lpSurface;
 
@@ -91,5 +91,5 @@ void Starfield::Draw(BOOL FirstDraw)
     m_Stars[i].Draw(Pitch, wlpSurface);
   }
 
-  m_lpDDS->Unlock(NULL);
+  m_lpDDS->Unlock(nullptr);
 }
