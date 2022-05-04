@@ -389,8 +389,6 @@ int WINAPI WinMain(
           if (QuitQuery)
           {
             QuitQuery = FALSE;
-            // DIM.Flush(USE_KEYBOARD);
-            // Menu.SetState(TRUE);
             GameOver = PlayerDieSequence = TRUE;
           }
 
