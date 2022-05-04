@@ -12,8 +12,8 @@ private:
   LPDIRECTDRAWSURFACE7 lpDDSMenuItemsSource;
   int iNrItems, iCurrentItem;
   BOOL bMenuActive;
-  RECT rMenuItemBBox;
-  POINT Position;
+  RECT rMenuItemBBox{};
+  POINT Position{};
 
 public:
   GameMenu();

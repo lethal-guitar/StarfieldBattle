@@ -20,8 +20,8 @@ protected:
   int StepX, StepY;
   float x, y;
   BOOL Looped, Continue, Done;
-  char Type;
-  RECT BBox;
+  char Type{};
+  RECT BBox{};
 
 public:
   Sprite();
