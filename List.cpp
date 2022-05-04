@@ -2,7 +2,7 @@
 
 void List::Add(void* NewEntry)
 {
-  Knoten* NewKnoten = new Knoten(NewEntry);
+  auto* NewKnoten = new Knoten(NewEntry);
 
   if (nullptr == Start)
   {
@@ -131,7 +131,7 @@ void List::ReplaceCurrent(void* NewEntry)
       Knoten* pTmp = CurrentKnoten;
 
       CurrentKnoten = CurrentKnoten->GetPrev();
-      Knoten* pNewKn = new Knoten(NewEntry);
+      auto* pNewKn = new Knoten(NewEntry);
 
       pNewKn->SetPrev(CurrentKnoten);
       pNewKn->SetNext(pTmp->GetNext());

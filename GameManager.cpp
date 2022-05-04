@@ -226,7 +226,7 @@ void SpriteManager::AddEnemys(int Nr)
     {
       char Rnd = (char)(rand() % 3 + 1);
 
-      ASprite* Spr = new ASprite;
+      auto* Spr = new ASprite;
 
       switch (Rnd)
       {
@@ -265,7 +265,7 @@ void SpriteManager::FireShot(int x, int y)
 {
   if (NrShots < MAX_SHOTS)
   {
-    Sprite* Shot = new Sprite;
+    auto* Shot = new Sprite;
 
     Shot->Create(lpDDSEmShot, 12, 20, MSECS(16), TRUE);
 

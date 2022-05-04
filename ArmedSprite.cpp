@@ -75,7 +75,7 @@ void ArmedSprite::Fire()
 {
   if (NrShots < MaxShots && CurrentDelay > ShotDelay)
   {
-    Sprite* Shot = new Sprite;
+    auto* Shot = new Sprite;
     Shot->Create(
       ShotData.lpDDS,
       ShotData.FrameWidth,
