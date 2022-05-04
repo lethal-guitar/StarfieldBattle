@@ -6,9 +6,9 @@ BOOL DirectDrawManager::Init(HWND hWnd)
   lpDDSPrimary = nullptr;
   lpDDSBackBuffer = nullptr;
 
-  for (int i = 0; i < MAX_SURFACES; i++)
+  for (auto& i : SurfacesToRelease)
   {
-    SurfacesToRelease[i] = nullptr;
+    i = nullptr;
   }
 
   ZeroMemory(&BlitFX, sizeof(BlitFX));
@@ -51,12 +51,12 @@ BOOL DirectDrawManager::Init(HWND hWnd)
 
 DirectDrawManager::~DirectDrawManager()
 {
-  for (int i = 0; i < MAX_SURFACES; i++)
+  for (auto& i : SurfacesToRelease)
   {
-    if (nullptr != SurfacesToRelease[i])
+    if (nullptr != i)
     {
-      SurfacesToRelease[i]->Release();
-      SurfacesToRelease[i] = nullptr;
+      i->Release();
+      i = nullptr;
     }
   }
 

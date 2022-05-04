@@ -307,10 +307,10 @@ int WINAPI WinMain(
   {
     int tmp = 10 * MAX_HISCORE_ENTRYS;
 
-    for (int i = 0; i < MAX_HISCORE_ENTRYS; i++)
+    for (auto& Entry : Entrys)
     {
-      strcpy(Entrys[i].Name, "BFGBoom Productions");
-      Entrys[i].Score = tmp;
+      strcpy(Entry.Name, "BFGBoom Productions");
+      Entry.Score = tmp;
       tmp -= 10;
     }
   }

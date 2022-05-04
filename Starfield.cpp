@@ -53,11 +53,11 @@ Starfield::Starfield(int NrStars, LPDIRECTDRAWSURFACE7 lpDDS)
 
   int rgb = 255;
 
-  for (int i = 0; i < MAX_SPEED; i++)
+  for (auto& StarColor : StarColors)
   {
-    StarColors[i].r = rgb;
-    StarColors[i].g = rgb;
-    StarColors[i].b = rgb;
+    StarColor.r = rgb;
+    StarColor.g = rgb;
+    StarColor.b = rgb;
     rgb -= 40;
   }
 }
