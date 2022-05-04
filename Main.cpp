@@ -52,17 +52,22 @@ LRESULT CALLBACK WindowProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
 
         case 0x50: // VK_P
         case VK_PAUSE:
-          if (!InGame || PlayerDieSequence)
-            break;
+          {
+            if (!InGame || PlayerDieSequence)
+              break;
 
-          Running = !Running;
+            Running = !Running;
 
-          RECT r = {0, 0, 500, 200};
-          DDM.GetBuffer()->BltFast(
-            150, 200, lpDDSLogo, &r, DDBLTFAST_SRCCOLORKEY | DDBLTFAST_WAIT);
+            RECT r = {0, 0, 500, 200};
+            DDM.GetBuffer()->BltFast(
+              150, 200, lpDDSLogo, &r, DDBLTFAST_SRCCOLORKEY | DDBLTFAST_WAIT);
 
-          DDM.Flip();
-          DDM.CopyPrimaryToBackBuffer();
+            DDM.Flip();
+            DDM.CopyPrimaryToBackBuffer();
+          }
+          break;
+
+        default:
           break;
       }
       break;
@@ -519,6 +524,8 @@ int WINAPI WinMain(
                   break;
                 case 3:
                   PlPoints += 20;
+                  break;
+                default:
                   break;
               }
             }
