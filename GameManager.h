@@ -42,5 +42,5 @@ typedef ASprite_NoList ASprite;
 
 #endif
 
-extern DirectDrawManager DDM;
+
 extern FXManager FXM;
