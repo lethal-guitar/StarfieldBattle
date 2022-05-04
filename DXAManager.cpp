@@ -56,12 +56,12 @@ BOOL DirectXAudioManager::Init(HWND hWnd, const char* SearchPath)
 
 DirectXAudioManager::~DirectXAudioManager()
 {
-  for (auto& i : lpDMSegSoundFX)
+  for (auto& SoundFx : lpDMSegSoundFX)
   {
-    if (nullptr != i)
+    if (nullptr != SoundFx)
     {
-      i->Release();
-      i = nullptr;
+      SoundFx->Release();
+      SoundFx = nullptr;
     }
   }
 
