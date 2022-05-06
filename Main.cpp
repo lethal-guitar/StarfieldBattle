@@ -321,15 +321,15 @@ int WINAPI WinMain(
   }
   else
   {
-    short Nr = fread(
+    const auto Nr = fread(
       (void*)Entrys, sizeof(HiScoreEntry), MAX_HISCORE_ENTRYS, fScoreList);
 
     if (Nr < MAX_HISCORE_ENTRYS)
     {
-      for (int i = Nr; i < MAX_HISCORE_ENTRYS; i++)
+      for (auto i = Nr; i < MAX_HISCORE_ENTRYS; i++)
       {
         strcpy(Entrys[i].Name, "BFGBoom Productions");
-        Entrys[i].Score = 100 - 10 * i;
+        Entrys[i].Score = 100 - 10 * int(i);
       }
     }
 
@@ -403,16 +403,16 @@ int WINAPI WinMain(
           int PlAction = DIM.GetInput(KeyMap);
 
           if (PlAction & MOVE_LEFT)
-            Player.Move(float(-PLAYER_MOVE_DIST) / FrameRate, 0);
+            Player.Move(-PLAYER_MOVE_DIST / float(FrameRate), 0);
 
           if (PlAction & MOVE_RIGHT)
-            Player.Move(float(PLAYER_MOVE_DIST) / FrameRate, 0);
+            Player.Move(PLAYER_MOVE_DIST / float(FrameRate), 0);
 
           if (PlAction & MOVE_UP)
-            Player.Move(0, float(-PLAYER_MOVE_DIST) / FrameRate);
+            Player.Move(0, -PLAYER_MOVE_DIST / float(FrameRate));
 
           if (PlAction & MOVE_DOWN)
-            Player.Move(0, float(PLAYER_MOVE_DIST) / FrameRate);
+            Player.Move(0, PLAYER_MOVE_DIST / float(FrameRate));
 
           if (PlAction & FIRE)
             Player.Fire();
@@ -425,16 +425,16 @@ int WINAPI WinMain(
             int Pl2Action = DIM.GetInput(Pl2_KeyMap);
 
             if (Pl2Action & MOVE_LEFT)
-              Player2.Move(float(-PLAYER_MOVE_DIST) / FrameRate, 0);
+              Player2.Move(-PLAYER_MOVE_DIST / float(FrameRate), 0);
 
             if (Pl2Action & MOVE_RIGHT)
-              Player2.Move(float(PLAYER_MOVE_DIST) / FrameRate, 0);
+              Player2.Move(PLAYER_MOVE_DIST / float(FrameRate), 0);
 
             if (Pl2Action & MOVE_UP)
-              Player2.Move(0, float(-PLAYER_MOVE_DIST) / FrameRate);
+              Player2.Move(0, -PLAYER_MOVE_DIST / float(FrameRate));
 
             if (Pl2Action & MOVE_DOWN)
-              Player2.Move(0, float(PLAYER_MOVE_DIST) / FrameRate);
+              Player2.Move(0, PLAYER_MOVE_DIST / float(FrameRate));
 
             if (Pl2Action & FIRE)
               Player2.Fire();
@@ -879,7 +879,7 @@ int WINAPI WinMain(
             bDoInc = TRUE;
           }
 
-          static short Times = FrameRate / MSECS(500);
+          static auto Times = FrameRate / MSECS(500);
 
           if (++Times > FrameRate / MSECS(20))
           {
@@ -922,5 +922,5 @@ int WINAPI WinMain(
     fclose(fScoreList);
   }
 
-  return msg.wParam;
+  return static_cast<int>(msg.wParam);
 }

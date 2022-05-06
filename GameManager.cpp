@@ -173,7 +173,7 @@ int SpriteManager::TestCollisions(ArmedSprite* ToTest, int* pScoreAmount)
 
         if (nullptr != pScoreAmount)
         {
-          *pScoreAmount = Type;
+          *pScoreAmount = static_cast<int>(Type);
         }
       }
     }

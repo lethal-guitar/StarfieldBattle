@@ -53,7 +53,7 @@ void ArmedSprite::DrawShots(LPDIRECTDRAWSURFACE7 lpDDS)
       Shot->GetXY().y - ShotData.FrameHeight > 0 &&
       Shot->GetXY().y + ShotData.FrameHeight < SCR_HEIGHT - 10)
     {
-      Shot->Move(0, float(ShotSpeed / float(FrameRate)));
+      Shot->Move(0, float(ShotSpeed) / float(FrameRate));
       Shot->Draw(lpDDS);
     }
     else
@@ -83,11 +83,11 @@ void ArmedSprite::Fire()
 
     if (ShotSpeed > 0)
     {
-      Shot->SetXY(DWORD(x) + FrameWidth / 2, DWORD(y) + FrameHeight);
+      Shot->SetXY(int(x) + FrameWidth / 2, int(y) + FrameHeight);
     }
     else
     {
-      Shot->SetXY(DWORD(x) + FrameWidth / 2, DWORD(y) - ShotData.FrameHeight);
+      Shot->SetXY(int(x) + FrameWidth / 2, int(y) - ShotData.FrameHeight);
     }
 
     ShotList.Add((void*)Shot);
