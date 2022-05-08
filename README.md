@@ -6,6 +6,7 @@ where I'm cleaning up, modernizing and refactoring the code
 to make it easier to read and bring it up to modern standards and best practices.
 
 * Part 1: [video](https://youtu.be/aZR1y_zwNLw), [git tag](https://github.com/lethal-guitar/StarfieldBattle/commits/episode1)
+* Part 2: [video](https://www.youtube.com/watch?v=gqCWnH24wqM), [git tag](https://github.com/lethal-guitar/StarfieldBattle/commits/episode2)
 
 ## The original project
 
